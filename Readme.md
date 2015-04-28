@@ -1,22 +1,17 @@
-# Add authentication to a React Flux app
+# Add authentication to an Angular 2 app
 
-This is a sample that shows how you can add authentication to a React Flux app. Read more about it in [this blog post](https://auth0.com/blog/2015/04/09/adding-authentication-to-your-react-flux-app/)
+This is a sample that shows how you can add authentication to an Angular2 app. 
 
 ## Using it
 
 Clone this repository as well as [the server](https://github.com/auth0/nodejs-jwt-authentication-sample) for this example.
 
-First, run the server app in the port `3001`.
+First, run the server app in the port `3001` with `PORT=3001 node server.js`.
 
-Then, run `npm install` on this project and run `npm run watch` to start the app. Then just navigate to [http://localhost:3000](http://localhost:3000)
+Then, run `npm install` on this project and run `npm start` to start the app. Then just navigate to [http://localhost:3000](http://localhost:3000)
 
-## How does it work?
 
-To learn more about how this project works and how it has been implemented, please read [this blog post](https://auth0.com/blog/2015/04/09/adding-authentication-to-your-react-flux-app/)
 
-## Issue Reporting
-
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
 ## License
 
