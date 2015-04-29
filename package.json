@@ -22,12 +22,15 @@
     "gulp-size": "^1.2.1",
     "gulp-traceur": "0.17.*",
     "open": "0.0.5",
+    "rework": "~1.0.1",
+    "rework-npm": "~1.0.0",
     "serve-static": "~1.8.1",
     "systemjs-builder": "^0.10.3",
     "through2": "~0.6.3"
   },
   "dependencies": {
     "angular2": "2.0.0-alpha.20",
+    "bootstrap": "~3.3.4",
     "es6-module-loader": "0.16.5",
     "systemjs": "0.16.7"
   }

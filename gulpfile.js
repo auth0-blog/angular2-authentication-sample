@@ -3,11 +3,19 @@ var del = require('del');
 var plumber = require('gulp-plumber');
 var rename = require('gulp-rename');
 var traceur = require('gulp-traceur');
+var rework = require('rework');
+var npmRework = require('rework-npm');
+var path = require('path');
+var fs = require('fs');
 
 var PATHS = {
     src: {
       js: 'src/**/*.js',
-      html: 'src/**/*.html'
+      html: 'src/**/*.html',
+      css: {
+        main: 'src/index.css',
+        all: 'src/**/*.css'
+      }
     },
     lib: [
       'node_modules/gulp-traceur/node_modules/traceur/bin/traceur-runtime.js',
@@ -42,6 +50,21 @@ gulp.task('html', function () {
         .pipe(gulp.dest('dist'));
 });
 
+gulp.task('css', function() {
+  var file = path.resolve(PATHS.src.css.main);
+  var source = path.relative(__dirname, file);
+  var output = fs.createWriteStream('dist/build.css');
+  var contents = fs.readFileSync(file, {encoding: 'utf8'});
+
+  // Initialize and pluginize `rework`
+  var css = rework(contents);
+  css.use(npmRework());
+
+  // write result
+  output.write(css.toString())
+  output.end();
+});
+
 gulp.task('libs', ['angular2'], function () {
     var size = require('gulp-size');
     return gulp.src(PATHS.lib)
@@ -71,10 +94,11 @@ gulp.task('play', ['default'], function () {
     var serveStatic = require('serve-static');
     var open = require('open');
 
-    var port = 9000, app;
+    var port = 3000, app;
 
     gulp.watch(PATHS.src.html, ['html']);
     gulp.watch(PATHS.src.js, ['js']);
+    gulp.watch(PATHS.src.css.all, ['css']);
 
     app = connect().use(serveStatic(__dirname + '/dist'));  // serve everything that is static
     http.createServer(app).listen(port, function () {
@@ -82,4 +106,4 @@ gulp.task('play', ['default'], function () {
     });
 });
 
-gulp.task('default', ['js', 'html', 'libs']);
+gulp.task('default', ['js', 'css', 'html', 'libs']);
