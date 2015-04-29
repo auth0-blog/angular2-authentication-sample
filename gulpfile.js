@@ -7,6 +7,7 @@ var rework = require('rework');
 var npmRework = require('rework-npm');
 var path = require('path');
 var fs = require('fs');
+var mkpath = require('mkpath');
 
 var PATHS = {
     src: {
@@ -53,6 +54,7 @@ gulp.task('html', function () {
 gulp.task('css', function() {
   var file = path.resolve(PATHS.src.css.main);
   var source = path.relative(__dirname, file);
+  mkpath.sync('dist');
   var output = fs.createWriteStream('dist/build.css');
   var contents = fs.readFileSync(file, {encoding: 'utf8'});
 
