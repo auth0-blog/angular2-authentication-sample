@@ -1,14 +1,15 @@
-import {Component, Template} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 import {bind} from 'angular2/di';
 
 @Component({
   selector: 'home',
 })
-@Template({
-  url: 'home/home.html',
-  directives: []
+@View({
+  templateUrl: 'home.html'
 })
-export default class Home {
+export class Home {
+  name: srtring = 'World';
+
   constructor() {
     this.name = 'Gonto';
   }
