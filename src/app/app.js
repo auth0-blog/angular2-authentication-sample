@@ -6,7 +6,7 @@ import {Home} from '../home/home';
   selector: 'auth-app',
 })
 @View({
-  templateUrl: 'app.html',
+  templateUrl: 'app/app.html',
   directives: [If, Home]
 })
 export class App {

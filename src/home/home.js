@@ -5,7 +5,7 @@ import {bind} from 'angular2/di';
   selector: 'home',
 })
 @View({
-  templateUrl: 'home.html'
+  templateUrl: 'home/home.html'
 })
 export class Home {
   name: string;
