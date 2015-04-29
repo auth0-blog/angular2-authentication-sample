@@ -8,8 +8,7 @@ import {bind} from 'angular2/di';
   templateUrl: 'home.html'
 })
 export class Home {
-  name: srtring = 'World';
-
+  name: string;
   constructor() {
     this.name = 'Gonto';
   }
