@@ -23,6 +23,7 @@ var PATHS = {
       'node_modules/es6-module-loader/dist/es6-module-loader-sans-promises.src.js',
       'node_modules/systemjs/lib/extension-register.js',
       'node_modules/angular2/node_modules/zone.js/zone.js',
+      'node_modules/whatwg-fetch/fetch.js',
       'node_modules/angular2/node_modules/zone.js/long-stack-trace-zone.js'
     ]
 };
