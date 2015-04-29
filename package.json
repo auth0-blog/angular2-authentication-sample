@@ -29,9 +29,12 @@
     "through2": "~0.6.3"
   },
   "dependencies": {
-    "angular2": "2.0.0-alpha.20",
+    "angular2": "2.0.0-alpha.21",
     "bootstrap": "~3.3.4",
     "es6-module-loader": "0.16.5",
-    "systemjs": "0.16.7"
+    "jwt-decode": "~1.1.0",
+    "reqwest": "~1.1.5",
+    "systemjs": "0.16.7",
+    "when": "~3.7.3"
   }
 }
