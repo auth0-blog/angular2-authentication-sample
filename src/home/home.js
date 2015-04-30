@@ -32,7 +32,6 @@ export class Home {
   callSecuredApi() {
     this._callApi('Secured', 'http://localhost:3001/api/protected/random-quote');
   }
-
   _callApi(type, url) {
     this.response = null;
     this.api = type;
@@ -48,4 +47,9 @@ export class Home {
       this.response = error.message;
     });
   }
+
+  json(json) {
+    return JSON.stringify(json, null, 2);
+  }
+
 }
