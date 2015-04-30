@@ -12,18 +12,25 @@ import { Router, RouterLink } from 'angular2/router';
 })
 export class Login {
   constructor(router: Router) {
-    this.user = {};
     this.router = router;
   }
 
-  login() {
+  login(event, username, password) {
+    event.preventDefault();
     fetch('http://localhost:3001/sessions/create', {
       method: 'POST',
-      body: JSON.stringify(this.user)
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username, password
+      })
     })
     .then(status)
     .then(json)
     .then((response) => {
+      debugger;
       localStorage.setItem('jwt', response.id_token);
       this.router.navigate('/home');
     })

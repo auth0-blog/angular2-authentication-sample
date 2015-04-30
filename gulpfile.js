@@ -69,7 +69,7 @@ gulp.task('css', function() {
   output.end();
 });
 
-gulp.task('libs', ['angular2'], function () {
+gulp.task('libs', ['angular2', 'router'], function () {
     var size = require('gulp-size');
     return gulp.src(PATHS.lib)
       .pipe(size({showFiles: true, gzip: true}))
@@ -90,6 +90,21 @@ gulp.task('angular2', function () {
   var builder = new Builder(buildConfig);
 
   return builder.build('angular2/angular2', 'dist/lib/angular2.js', {});
+});
+
+gulp.task('router', function () {
+
+  var buildConfig = {
+    paths: {
+      "angular2/*": "node_modules/angular2/es6/prod/*.es6",
+      "rx/*": "node_modules/angular2/node_modules/rx/*.js"
+    }
+  };
+
+  var Builder = require('systemjs-builder');
+  var builder = new Builder(buildConfig);
+
+  return builder.build('angular2/router', 'dist/lib/router.js', {});
 });
 
 gulp.task('play', ['default'], function () {
