@@ -1,6 +1,6 @@
 <div class="login jumbotron center-block">
-  <h1>Login</h1>
-  <form role="form" (submit)="login($event, username.value, password.value)">
+  <h1>Signup</h1>
+  <form role="form" (submit)="signup($event, username.value, password.value)">
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" #username class="form-control" id="username" placeholder="Username">
@@ -11,5 +11,5 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-<a href="" router-link="signup" router-params="" >Click here to Signup</a>
+<a href="" router-link="login" router-params="">Click here to Login</a>
 </div>

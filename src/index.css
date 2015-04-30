@@ -1,4 +1,6 @@
 @import 'bootstrap';
 @import './src/home/home.css';
+@import './src/login/login.css';
+@import './src/signup/signup.css';
 
 

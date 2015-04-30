@@ -1,6 +1,7 @@
 import {Component, View, If} from 'angular2/angular2';
 import {bind} from 'angular2/di';
 import {status, text} from '../utils/fetch'
+import { Router} from 'angular2/router';
 
 @Component({
   selector: 'home',
@@ -13,9 +14,15 @@ export class Home {
   jwt: string;
   decodedJwt: string;
 
-  constructor() {
+  constructor(router: Router) {
+    this.router = router;
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && jwt_decode(this.jwt);
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    this.router.parent.navigate('/login');
   }
 
   callAnonymousApi() {
