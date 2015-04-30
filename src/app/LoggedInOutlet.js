@@ -12,7 +12,6 @@ export class LoggedInOutlet extends RouterOutlet {
   }
 
   canActivate(instruction) {
-    debugger;
     var url = this._router.lastNavigationAttempt;
     if (url !== '/login' && !localStorage.getItem('jwt')) {
       instruction.component = Login;
