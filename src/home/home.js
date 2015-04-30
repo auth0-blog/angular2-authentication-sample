@@ -1,7 +1,6 @@
 import {Component, View, If} from 'angular2/angular2';
 import {bind} from 'angular2/di';
 import {status, text} from '../utils/fetch'
-import {JSONPipe} from '../utils/pipes/json'
 
 @Component({
   selector: 'home',

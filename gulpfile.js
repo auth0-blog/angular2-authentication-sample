@@ -76,6 +76,7 @@ gulp.task('libs', ['angular2'], function () {
       .pipe(gulp.dest('dist/lib'));
 });
 
+
 gulp.task('angular2', function () {
 
   var buildConfig = {

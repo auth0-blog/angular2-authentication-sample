@@ -1,7 +1,8 @@
 import {View, Component, If} from 'angular2/angular2';
 import {bind} from 'angular2/di';
 import {Home} from '../home/home';
-import { Router, RouterOutlet, RouteConfig } from 'angular2/router';
+import {Login} from '../login/login';
+import { Router, RouterOutlet, RouterLink, RouteParams, RouteConfig } from 'angular2/router';
 
 @Component({
   selector: 'auth-app',
@@ -10,10 +11,11 @@ import { Router, RouterOutlet, RouteConfig } from 'angular2/router';
   templateUrl: 'app/app.html',
   directives: [If, RouterOutlet]
 })
-@RouteConfig([
-  {path: '/', component: Home }
-])
 export class App {
-  constructor() {
+  constructor(router: Router) {
+    router
+      .config('/home', Home)
+      .then((_) => router.config('/login', Login))
+      .then((_) => router.navigate('/login'))
   }
 }
