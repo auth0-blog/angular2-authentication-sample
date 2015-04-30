@@ -34,7 +34,7 @@
     "bootstrap": "~3.3.4",
     "es6-module-loader": "0.16.5",
     "jwt-decode": "~1.1.0",
-    "systemjs": "0.16.7",
+    "systemjs": "~0.16.10",
     "whatwg-fetch": "~0.7.0",
     "when": "~3.7.3"
   }

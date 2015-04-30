@@ -24,6 +24,7 @@ var PATHS = {
       'node_modules/systemjs/lib/extension-register.js',
       'node_modules/angular2/node_modules/zone.js/zone.js',
       'node_modules/whatwg-fetch/fetch.js',
+      'node_modules/jwt-decode/build/jwt-decode.js',
       'node_modules/angular2/node_modules/zone.js/long-stack-trace-zone.js'
     ]
 };
@@ -105,7 +106,7 @@ gulp.task('play', ['default'], function () {
 
     app = connect().use(serveStatic(__dirname + '/dist'));  // serve everything that is static
     http.createServer(app).listen(port, function () {
-      open('http://localhost:' + port);
+      // open('http://localhost:' + port);
     });
 });
 
