@@ -32,7 +32,7 @@ export class Login {
     .then((response) => {
       debugger;
       localStorage.setItem('jwt', response.id_token);
-      this.router.navigate('/home');
+      this.router.parent.navigate('/home');
     })
     .catch((error) => {
       console.log(error.message);
