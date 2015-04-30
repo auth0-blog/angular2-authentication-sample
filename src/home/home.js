@@ -37,6 +37,11 @@ export class Home {
     this.api = type;
     fetch(url, {
       method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'bearer ' + this.jwt
+      }
     })
     .then(status)
     .then(text)
