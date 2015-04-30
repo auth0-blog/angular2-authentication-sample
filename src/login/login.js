@@ -30,11 +30,11 @@ export class Login {
     .then(status)
     .then(json)
     .then((response) => {
-      debugger;
       localStorage.setItem('jwt', response.id_token);
       this.router.parent.navigate('/home');
     })
     .catch((error) => {
+      alert(error.message);
       console.log(error.message);
     });
   }

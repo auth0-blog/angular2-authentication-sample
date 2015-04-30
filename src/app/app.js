@@ -3,19 +3,20 @@ import {bind} from 'angular2/di';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import { Router, RouterOutlet, RouterLink, RouteParams, RouteConfig } from 'angular2/router';
+import {LoggedInOutlet} from './LoggedInOutlet';
 
 @Component({
   selector: 'auth-app',
 })
 @View({
   templateUrl: 'app/app.html',
-  directives: [If, RouterOutlet]
+  directives: [If, LoggedInOutlet]
 })
 export class App {
   constructor(router: Router) {
     router
       .config('/home', Home)
       .then((_) => router.config('/login', Login))
-      .then((_) => router.navigate('/login'))
+      .then((_) => router.navigate('/home'))
   }
 }
