@@ -2,8 +2,8 @@
   <div class="jumbotron centered">
     <h1>Welcome to the ngVegas sample!</h1>
     <h2 *if="jwt">Your JWT is:</h2>
-    <pre *if="jwt" class="jwt"><code>{{jwt}}</code></pre>
-    <pre *if="jwt" class="jwt"><code>{{decodedJwt}}</code></pre>
+    <pre *if="jwt" class="jwt"><code>{{ jwt }}</code></pre>
+    <pre *if="jwt" class="jwt"><code>{{ json(decodedJwt) }}</code></pre>
     <p>Click any of the buttons to call an API and get a response</p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callAnonymousApi()">Call Anonymous API</a></p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callSecuredApi()">Call Secure API</a></p>
