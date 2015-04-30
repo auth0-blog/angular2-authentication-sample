@@ -1,6 +1,6 @@
 # Add authentication to an Angular 2 app
 
-This is a sample that shows how you can add authentication to an Angular2 app. 
+This is a sample that shows how you can add authentication to an Angular2 app using the new router :D
 
 ## Using it
 
