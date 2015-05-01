@@ -1,9 +1,15 @@
-export class JSONPipe extends Pipe {
- supports(obj) {
-   return true;
- }
+import { Pipe } from 'angular2/change_detection';
 
- transform(value) {
-   return JSON.stringify(value, null, 2);
- }
+export class JSONPipeFactory extends Pipe {
+  supports(obj):boolean {
+    return true;
+  }
+
+  transform(value):string {
+    return JSON.stringify(value, null, 2);
+  }
+
+  create():Pipe {
+    return this
+  }
 }
