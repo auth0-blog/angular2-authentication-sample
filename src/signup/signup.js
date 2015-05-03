@@ -1,13 +1,13 @@
 import {Component, View, If} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
-import { Router, RouterLink } from 'angular2/router';
+import { Router } from 'angular2/router';
 
 @Component({
   selector: 'signup'
 })
 @View({
   templateUrl: 'signup/signup.html',
-  directives: [If, RouterLink]
+  directives: [If]
 })
 export class Signup {
   constructor(router: Router) {
