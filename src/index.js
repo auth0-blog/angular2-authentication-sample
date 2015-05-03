@@ -5,8 +5,8 @@ import { bind } from 'angular2/di';
 import { Router } from 'angular2/router';
 import { PipeRegistry } from 'angular2/change_detection';
 
-import { App } from './app/app'
-import { pipes } from './utils/pipes/pipes'
+import { App } from './app/app';
+import { pipes } from './utils/pipes/pipes';
 
 bootstrap(App, [
   bind(Router).toValue(new RootRouter(new Pipeline())),

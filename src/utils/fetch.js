@@ -1,6 +1,6 @@
 export function status(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   }
   return response.text().then(function(text) {
     throw new Error(text);
@@ -8,9 +8,9 @@ export function status(response) {
 }
 
 export function text(response) {
-  return response.text()
+  return response.text();
 }
 
 export function json(response) {
-  return response.json()
+  return response.json();
 }
