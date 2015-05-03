@@ -37,4 +37,9 @@ export class Login {
       console.log(error.message);
     });
   }
+
+  signup(event) {
+    event.preventDefault();
+    this.router.parent.navigate('/signup');
+  }
 }

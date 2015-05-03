@@ -7,11 +7,15 @@ import {Login} from '../login/login';
 export class LoggedInOutlet extends RouterOutlet {
   constructor(viewContainer, compiler, router, injector) {
     super(viewContainer, compiler, router, injector);
+    this.publicRoutes = {
+      '/login': true,
+      '/signup': true
+    }
   }
 
   canActivate(instruction) {
     var url = this._router.lastNavigationAttempt;
-    if (url !== '/login' && !localStorage.getItem('jwt')) {
+    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
       instruction.component = Login;
     }
     return PromiseWrapper.resolve(true);

@@ -14,7 +14,7 @@ export class Signup {
     this.router = router;
   }
 
-  login(event, username, password) {
+  signup(event, username, password) {
     event.preventDefault();
     fetch('http://localhost:3001/users', {
       method: 'POST',
@@ -37,4 +37,10 @@ export class Signup {
       console.log(error.message);
     });
   }
+
+  login(event) {
+    event.preventDefault();
+    this.router.parent.navigate('/login');
+  }
+
 }

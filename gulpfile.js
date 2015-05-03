@@ -113,15 +113,19 @@ gulp.task('play', ['default'], function () {
     var connect = require('connect');
     var serveStatic = require('serve-static');
     var open = require('open');
-
-    var port = 3000, app;
+    var port = 3000;
+    var app;
 
     gulp.watch(PATHS.src.html, ['html']);
     gulp.watch(PATHS.src.js, ['js']);
     gulp.watch(PATHS.src.css.all, ['css']);
 
-    app = connect().use(serveStatic(__dirname + '/dist'));  // serve everything that is static
+    app = connect();
+
+    app.use(serveStatic(__dirname + '/dist'));  // serve everything that is static
+
     http.createServer(app).listen(port, function () {
+      console.log('\n', 'Server listening on port', port, '\n')
       // open('http://localhost:' + port);
     });
 });
