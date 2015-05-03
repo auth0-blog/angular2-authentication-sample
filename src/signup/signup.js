@@ -9,7 +9,7 @@ import { Router, RouterLink } from 'angular2/router';
   templateUrl: 'signup/signup.html',
   directives: [If, RouterLink]
 })
-export class Login {
+export class Signup {
   constructor(router: Router) {
     this.router = router;
   }
