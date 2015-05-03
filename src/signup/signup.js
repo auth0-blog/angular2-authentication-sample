@@ -1,6 +1,5 @@
 import {Component, View, If} from 'angular2/angular2';
-import {bind} from 'angular2/di';
-import {status, json} from '../utils/fetch'
+import {status, json} from '../utils/fetch';
 import { Router, RouterLink } from 'angular2/router';
 
 @Component({

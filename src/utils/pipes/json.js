@@ -10,6 +10,6 @@ export class JSONPipeFactory extends Pipe {
   }
 
   create():Pipe {
-    return this
+    return this;
   }
 }
