@@ -1,4 +1,4 @@
-import {Component, View, If} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
 import {status, json} from '../utils/fetch'
 import { Router, RouterLink } from 'angular2/router';
 
@@ -7,7 +7,7 @@ import { Router, RouterLink } from 'angular2/router';
 })
 @View({
   templateUrl: 'login/login.html',
-  directives: [If, RouterLink]
+  directives: [RouterLink]
 })
 export class Login {
   constructor(router: Router) {
