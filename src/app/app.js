@@ -1,4 +1,4 @@
-import {View, Component, If} from 'angular2/angular2';
+import {View, Component} from 'angular2/angular2';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
@@ -6,11 +6,11 @@ import { Router } from 'angular2/router';
 import {LoggedInOutlet} from './LoggedInOutlet';
 
 @Component({
-  selector: 'auth-app',
+  selector: 'auth-app'
 })
 @View({
   templateUrl: 'app/app.html',
-  directives: [If, LoggedInOutlet]
+  directives: [LoggedInOutlet]
 })
 export class App {
   constructor(router: Router) {
