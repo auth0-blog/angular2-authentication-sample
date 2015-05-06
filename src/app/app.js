@@ -14,10 +14,20 @@ import {LoggedInOutlet} from './LoggedInOutlet';
 })
 export class App {
   constructor(router: Router) {
+    this.router = router;
     router
       .config('/home', Home)
       .then((_) => router.config('/login', Login, 'login'))
       .then((_) => router.config('/signup', Signup, 'signup'))
       .then((_) => router.navigate('/home'))
+  }
+
+  goTo(event, url) {
+    event.preventDefault();
+    this.router.navigate(url).then(() => {
+      console.log("Router successfully to", url);
+    }, () => {
+      console.log("Error going to URL", url);
+    });
   }
 }
