@@ -4,7 +4,7 @@ This is a sample that shows how you can add authentication to an Angular2 app us
 
 ## Using it
 
-This demo relies on a server, we've created a [authentication server demo](https://github.com/auth0/nodejs-jwt-authentication-sample) to get you started. You'll need to clone it, run `npm install` then `npm start`. It will run a local server on port 3000.
+This demo relies on a server, we've created a [authentication server demo](https://github.com/auth0/nodejs-jwt-authentication-sample) to get you started. You'll need to clone it, run `npm install` then `npm start`. It will run a local server on port 3001.
 
 Then, you can run `npm install` and `npm start` on this project. Navigate to [http://localhost:3000](http://localhost:3000).
 
