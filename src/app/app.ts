@@ -11,7 +11,7 @@ import {LoggedInOutlet} from './LoggedInOutlet';
   selector: 'auth-app'
 })
 @View({
-  templateUrl: 'app/app.html',
+  template: require('./app.html'),
   directives: [LoggedInOutlet]
 })
 export class App {

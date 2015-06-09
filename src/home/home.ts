@@ -1,6 +1,6 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {Component, View, If} from 'angular2/angular2';
+import {Component, View, NgIf} from 'angular2/angular2';
 import {status, text} from '../utils/fetch'
 import { Router} from 'angular2/router';
 
@@ -9,7 +9,7 @@ import { Router} from 'angular2/router';
 })
 @View({
   templateUrl: 'home/home.html',
-  directives: [If]
+  directives: [NgIf]
 })
 export class Home {
   jwt: string;

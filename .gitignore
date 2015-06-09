@@ -37,3 +37,5 @@ dist
 public/__build__/**
 .webpack.json
 
+
+build/
