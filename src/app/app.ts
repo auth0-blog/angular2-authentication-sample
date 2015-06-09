@@ -26,7 +26,7 @@ let template = require('./app.html');
 export class App {
   constructor(router: Router, browserLocation: BrowserLocation) {
     // we need to manually go to the correct uri until the router is fixed
-    let uri = browserLocation.path();
-    router.navigate(uri);
+    // let uri = browserLocation.path();
+    // router.navigate(uri);
   }
 }
