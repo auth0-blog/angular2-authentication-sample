@@ -4,6 +4,8 @@ import {Login} from '../login/login';
 
 @Directive({selector: 'loggedin-router-outlet'})
 export class LoggedInOutlet extends RouterOutlet {
+  publicRoutes: any;
+
   constructor(viewContainer, loader, router, injector, name) {
     super(viewContainer, loader, router, injector, name);
     this.publicRoutes = {
