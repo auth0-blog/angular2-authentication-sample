@@ -13,7 +13,7 @@ let template = require('./home.html');
   selector: 'home'
 })
 @View({
-  template:`<style>${styles}</style>\n${template}`
+  template:`<style>${styles}</style>\n${template}`,
   directives: [coreDirectives]
 })
 export class Home {

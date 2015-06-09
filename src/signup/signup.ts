@@ -12,8 +12,7 @@ let template = require('./signup.html');
   selector: 'signup'
 })
 @View({
-  directives: [RouterLink, coreDirectives]
-  // include our .html and .css file
+  directives: [RouterLink, coreDirectives],
   template:`<style>${styles}</style>\n${template}`
 
 })

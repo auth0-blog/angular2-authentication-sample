@@ -13,7 +13,7 @@ let template = require('./login.html');
   selector: 'login'
 })
 @View({
-  template:`<style>${styles}</style>\n${template}`
+  template:`<style>${styles}</style>\n${template}`,
   directives: [RouterLink]
 })
 export class Login {
