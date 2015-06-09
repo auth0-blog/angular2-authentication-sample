@@ -20,7 +20,7 @@ export class Signup {
 
   signup(event, username, password) {
     event.preventDefault();
-    fetch('http://localhost:3001/users', {
+    window.fetch('http://localhost:3001/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
