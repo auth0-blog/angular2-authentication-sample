@@ -32,6 +32,9 @@ declare module "angular2/src/facade/async" {
     return(val:any)
     throw(val:any)
   }
+  class PromiseWrapper {
+
+  }
 }
 
 declare module "angular2/src/render/dom/shadow_dom/style_url_resolver" {
@@ -136,7 +139,9 @@ declare module "angular2/router" {
     generate(name:string, params:any): string;
     subscribe(onNext: Function): void;
   }
-  var RouterOutlet: any;
+  class RouterOutlet {
+
+  }
   var RouterLink: any;
   var RouteParams: any;
   var routerInjectables: any;
