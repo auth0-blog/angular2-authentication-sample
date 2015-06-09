@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/tsd.d.ts" />
+
 import { Pipe } from 'angular2/change_detection';
 
 export class JSONPipeFactory extends Pipe {

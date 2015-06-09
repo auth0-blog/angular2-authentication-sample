@@ -1,3 +1,5 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
 import {View, Component} from 'angular2/angular2';
 import {Home} from '../home/home';
 import {Login} from '../login/login';

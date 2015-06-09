@@ -1,3 +1,5 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
 import {Component, View, If} from 'angular2/angular2';
 import {status, text} from '../utils/fetch'
 import { Router} from 'angular2/router';

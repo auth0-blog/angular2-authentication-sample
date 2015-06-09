@@ -1,3 +1,5 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
 import {Component, View} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
 import { Router, RouterLink } from 'angular2/router';
@@ -18,7 +20,7 @@ export class Signup {
 
   signup(event, username, password) {
     event.preventDefault();
-    window.fetch('http://localhost:3001/users', {
+    fetch('http://localhost:3001/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
