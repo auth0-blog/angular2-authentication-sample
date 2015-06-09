@@ -24,10 +24,7 @@ let template = require('./app.html');
   { path: '/signup',    as: 'signup',      component: Signup }
 ])
 export class App {
-  router: Router;
-
   constructor(router: Router, browserLocation: BrowserLocation) {
-    this.router = router;
     // we need to manually go to the correct uri until the router is fixed
     let uri = browserLocation.path();
     router.navigate(uri);
