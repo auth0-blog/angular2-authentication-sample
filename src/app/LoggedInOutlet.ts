@@ -12,6 +12,7 @@ export class LoggedInOutlet extends RouterOutlet {
     _parentRouter: Router,
     _injector: Injector,
     @Attribute('name') nameAttr: string) {
+
     super(elementRef, _loader, _parentRouter, _injector, nameAttr);
     this.publicRoutes = {
       '/login': true,

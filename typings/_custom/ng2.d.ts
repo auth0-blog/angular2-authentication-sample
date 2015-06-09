@@ -148,6 +148,7 @@ declare module "angular2/router" {
     renavigate(): Promise<any>;
     generate(name:string, params:any): string;
     subscribe(onNext: Function): void;
+    parent: Router;
   }
   class RouterOutlet {
     constructor(elementRef: any, _loader: any, _parentRouter: any, _injector: any, nameAttr: any)

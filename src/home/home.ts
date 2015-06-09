@@ -1,15 +1,20 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {Component, View, NgIf} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
+import {coreDirectives} from 'angular2/directives';
 import {status, text} from '../utils/fetch'
 import { Router} from 'angular2/router';
+
+let styles   = require('./home.css');
+let template = require('./home.html');
+
 
 @Component({
   selector: 'home'
 })
 @View({
-  templateUrl: 'home/home.html',
-  directives: [NgIf]
+  template:`<style>${styles}</style>\n${template}`,
+  directives: [coreDirectives]
 })
 export class Home {
   jwt: string;
@@ -20,7 +25,7 @@ export class Home {
   constructor(router: Router) {
     this.router = router;
     this.jwt = localStorage.getItem('jwt');
-    this.decodedJwt = this.jwt && jwt_decode(this.jwt);
+    this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
 
   logout() {
@@ -38,7 +43,7 @@ export class Home {
   _callApi(type, url) {
     this.response = null;
     this.api = type;
-    fetch(url, {
+    window.fetch(url, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

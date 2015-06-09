@@ -4,11 +4,16 @@ import {Component, View} from 'angular2/angular2';
 import {status, json} from '../utils/fetch'
 import { Router, RouterLink } from 'angular2/router';
 
+
+let styles   = require('./login.css');
+let template = require('./login.html');
+
+
 @Component({
   selector: 'login'
 })
 @View({
-  templateUrl: 'login/login.html',
+  template:`<style>${styles}</style>\n${template}`,
   directives: [RouterLink]
 })
 export class Login {
@@ -20,7 +25,7 @@ export class Login {
 
   login(event, username, password) {
     event.preventDefault();
-    fetch('http://localhost:3001/sessions/create', {
+    window.fetch('http://localhost:3001/sessions/create', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -7,11 +7,14 @@ import {Signup} from '../signup/signup';
 import { Router } from 'angular2/router';
 import {LoggedInOutlet} from './LoggedInOutlet';
 
+let template = require('./app.html');
+
+
 @Component({
   selector: 'auth-app'
 })
 @View({
-  template: require('./app.html'),
+  template:`${template}`,
   directives: [LoggedInOutlet]
 })
 export class App {
