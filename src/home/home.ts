@@ -21,6 +21,7 @@ export class Home {
   decodedJwt: string;
   router: Router;
   response: string;
+  api: string;
 
   constructor(router: Router) {
     this.router = router;

@@ -4,7 +4,8 @@ import {View, Component} from 'angular2/angular2';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
-import { Router } from 'angular2/router';
+import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
+import {BrowserLocation} from 'angular2/src/router/browser_location';
 import {LoggedInOutlet} from './LoggedInOutlet';
 
 let template = require('./app.html');
@@ -15,26 +16,20 @@ let template = require('./app.html');
 })
 @View({
   template:`${template}`,
-  directives: [LoggedInOutlet]
+  directives: [LoggedInOutlet, RouterOutlet]
 })
+@RouteConfig([
+  { path: '/',          as: 'home',      component: Home },
+  { path: '/login',     as: 'login', component: Login },
+  { path: '/signup',    as: 'signup',      component: Signup }
+])
 export class App {
   router: Router;
 
-  constructor(router: Router) {
+  constructor(router: Router, browserLocation: BrowserLocation) {
     this.router = router;
-    router
-      .config('/home', Home)
-      .then((_) => router.config('/login', Login, 'login'))
-      .then((_) => router.config('/signup', Signup, 'signup'))
-      .then((_) => router.navigate('/home'))
-  }
-
-  goTo(event, url) {
-    event.preventDefault();
-    this.router.navigate(url).then(() => {
-      console.log("Router successfully to", url);
-    }, () => {
-      console.log("Error going to URL", url);
-    });
+    // we need to manually go to the correct uri until the router is fixed
+    let uri = browserLocation.path();
+    router.navigate(uri);
   }
 }

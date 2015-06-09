@@ -131,7 +131,6 @@ declare module "angular2/router" {
   class Router {
     _registry: any;
     _pipeline: any;
-    parent: any;
     hostComponent: any;
     navigating: boolean;
     lastNavigationAttempt: string;
