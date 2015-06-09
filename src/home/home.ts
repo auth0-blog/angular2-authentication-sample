@@ -14,6 +14,8 @@ import { Router} from 'angular2/router';
 export class Home {
   jwt: string;
   decodedJwt: string;
+  router: Router;
+  response: string;
 
   constructor(router: Router) {
     this.router = router;
