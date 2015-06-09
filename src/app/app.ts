@@ -7,11 +7,15 @@ import {Signup} from '../signup/signup';
 import { Router } from 'angular2/router';
 import {LoggedInOutlet} from './LoggedInOutlet';
 
+let styles   = require('./home.css');
+let template = require('./home.html');
+
+
 @Component({
   selector: 'auth-app'
 })
 @View({
-  templateUrl: 'app/app.html',
+  template:`<style>${styles}</style>\n${template}`
   directives: [LoggedInOutlet]
 })
 export class App {

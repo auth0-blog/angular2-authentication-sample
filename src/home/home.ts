@@ -1,15 +1,20 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {Component, View, If} from 'angular2/angular2';
+import {Component, View} from 'angular2/angular2';
+import {coreDirectives} from 'angular2/directives';
 import {status, text} from '../utils/fetch'
 import { Router} from 'angular2/router';
+
+let styles   = require('./home.css');
+let template = require('./home.html');
+
 
 @Component({
   selector: 'home'
 })
 @View({
-  templateUrl: 'home/home.html',
-  directives: [If]
+  template:`<style>${styles}</style>\n${template}`
+  directives: [coreDirectives]
 })
 export class Home {
   jwt: string;
