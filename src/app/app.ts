@@ -13,6 +13,8 @@ import {LoggedInOutlet} from './LoggedInOutlet';
   directives: [LoggedInOutlet]
 })
 export class App {
+  router: Router;
+
   constructor(router: Router) {
     this.router = router;
     router

@@ -10,13 +10,15 @@ import { Router, RouterLink } from 'angular2/router';
   directives: [RouterLink]
 })
 export class Signup {
+  router: Router;
+
   constructor(router: Router) {
     this.router = router;
   }
 
   signup(event, username, password) {
     event.preventDefault();
-    fetch('http://localhost:3001/users', {
+    window.fetch('http://localhost:3001/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
