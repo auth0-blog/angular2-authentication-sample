@@ -129,6 +129,16 @@ declare module "angular2/src/router/location" {
 declare module "angular2/router" {
   class Instruction {}
   class Router {
+    _registry: any;
+    _pipeline: any;
+    parent: any;
+    hostComponent: any;
+    navigating: boolean;
+    lastNavigationAttempt: string;
+    previousUrl: string;
+    _currentInstruction: any;
+    _outlets: any;
+    _subject: any;
     navigate(url: string): Promise<any>;
     config(config: any): Promise<any>;
     deactivate(): Promise<any>;
@@ -141,10 +151,23 @@ declare module "angular2/router" {
     parent: Router;
   }
   class RouterOutlet {
-    _router: Router;
+    constructor(elementRef: any, _loader: any, _parentRouter: any, _injector: any, nameAttr: any)
+    _loader: any;
+    _parentRouter: any;
+    _injector: any;
+    _childRouter: any;
+    _componentRef: any;
+    _elementRef: any;
+    _currentInstruction: any;
+    /**
+     * Given an instruction, update the contents of this viewport.
+     */
+    activate(instruction: any): any;
+    deactivate(): any;
+    canDeactivate(instruction: any): any;
   }
+  class RouteParams {}
   var RouterLink: any;
-  var RouteParams: any;
   var routerInjectables: any;
   var RouteConfigAnnotation: any;
   var RouteConfig: any;

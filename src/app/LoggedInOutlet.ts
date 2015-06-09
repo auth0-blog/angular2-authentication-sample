@@ -1,13 +1,19 @@
-import {Directive} from 'angular2/angular2';
-import {RouterOutlet} from 'angular2/router';
+import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/angular2';
+import {Router, RouterOutlet} from 'angular2/router';
+import {Injector} from 'angular2/di';
 import {Login} from '../login/login';
 
 @Directive({selector: 'loggedin-router-outlet'})
 export class LoggedInOutlet extends RouterOutlet {
-  publicRoutes: any;
+  publicRoutes: any
+  constructor(
+    elementRef: ElementRef,
+    _loader: DynamicComponentLoader,
+    _parentRouter: Router,
+    _injector: Injector,
+    @Attribute('name') nameAttr: string) {
 
-  constructor(viewContainer, loader, router, injector, name) {
-    super(viewContainer, loader, router, injector, name);
+    super(elementRef, _loader, _parentRouter, _injector, nameAttr);
     this.publicRoutes = {
       '/login': true,
       '/signup': true
@@ -15,7 +21,7 @@ export class LoggedInOutlet extends RouterOutlet {
   }
 
   canActivate(instruction) {
-    var url = this._router.lastNavigationAttempt;
+    var url = this._parentRouter.lastNavigationAttempt;
     if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
       instruction.component = Login;
     }
