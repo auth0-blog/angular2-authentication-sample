@@ -16,7 +16,7 @@ let template = require('./app.html');
 })
 @View({
   template:`${template}`,
-  directives: [LoggedInOutlet, RouterOutlet]
+  directives: [RouterOutlet]
 })
 @RouteConfig([
   { path: '/',          as: 'home',      component: Home },
