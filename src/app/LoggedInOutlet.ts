@@ -12,7 +12,7 @@ export class LoggedInOutlet extends RouterOutlet {
     _parentRouter: Router,
     _injector: Injector,
     @Attribute('name') nameAttr: string) {
-
+    debugger;
     super(elementRef, _loader, _parentRouter, _injector, nameAttr);
     this.publicRoutes = {
       '/login': true,
@@ -20,11 +20,12 @@ export class LoggedInOutlet extends RouterOutlet {
     }
   }
 
-  canActivate(instruction) {
+  activate(instruction) {
+    debugger;
     var url = this._parentRouter.lastNavigationAttempt;
     if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
       instruction.component = Login;
     }
-    return Promise.resolve(true);
+    super(instruction);
   }
 }
