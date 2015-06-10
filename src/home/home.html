@@ -1,14 +1,14 @@
-<div class="home">
-  <div class="jumbotron centered">
+<div>
+  <div class="home jumbotron centered">
     <h1>Welcome to the angular2 authentication sample!</h1>
-    <h2 *if="jwt">Your JWT is:</h2>
-    <pre *if="jwt" class="jwt"><code>{{ jwt }}</code></pre>
-    <pre *if="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>
+    <h2 *ng-if="jwt">Your JWT is:</h2>
+    <pre *ng-if="jwt" class="jwt"><code>{{ jwt }}</code></pre>
+    <pre *ng-if="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>
     <p>Click any of the buttons to call an API and get a response</p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callAnonymousApi()">Call Anonymous API</a></p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callSecuredApi()">Call Secure API</a></p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="logout()">Logout</a></p>
-    <h2 *if="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
-    <h3 *if="response">{{response}}</h3>
+    <h2 *ng-if="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
+    <h3 *ng-if="response">{{response}}</h3>
   </div>
 </div>

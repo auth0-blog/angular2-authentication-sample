@@ -1,41 +1,49 @@
 {
-  "name": "ng2-play",
+  "name": "angular2-full-app-demo",
   "version": "0.0.0",
+  "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp play"
+    "start": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pkozlowski-opensource/ng2-play.git"
+    "url": "https://github.com/auth0/angular2-authentication-sample.git"
   },
+  "author": "Martin Gontovnikas (http://gon.to) <martin@gon.to>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pkozlowski-opensource/ng2-play/issues"
+    "url": "https://github.com/auth0/angular2-authentication-sample/issues"
   },
-  "homepage": "https://github.com/pkozlowski-opensource/ng2-play",
-  "devDependencies": {
-    "connect": "^3.3.4",
-    "del": "~1.1.1",
-    "gulp": "~3.8.10",
-    "gulp-plumber": "^1.0.0",
-    "gulp-rename": "~1.2.0",
-    "gulp-size": "^1.2.1",
-    "gulp-traceur": "0.17.*",
-    "mkpath": "~0.1.0",
-    "open": "0.0.5",
-    "rework": "~1.0.1",
-    "rework-npm": "~1.0.0",
-    "serve-static": "~1.8.1",
-    "systemjs-builder": "^0.10.3",
-    "through2": "~0.6.3"
-  },
+  "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
-    "angular2": "2.0.0-alpha.21",
+    "angular2": "2.0.0-alpha.26",
+    "raw-loader": "^0.5.1",
+    "reflect-metadata": "^0.1.0",
+    "rtts_assert": "2.0.0-alpha.26",
+    "rx": "^2.5.3",
+    "zone.js": "^0.5.0",
     "bootstrap": "~3.3.4",
-    "es6-module-loader": "0.16.5",
     "jwt-decode": "~1.1.0",
-    "systemjs": "~0.16.10",
     "whatwg-fetch": "~0.7.0",
     "when": "~3.7.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.14.4",
+    "xtend": "^4.0.0",
+    "loader-utils": "^0.2.9",
+    "exports-loader": "^0.6.2",
+    "expose-loader": "^0.7.0",
+    "file-loader": "^0.8.1",
+    "html-webpack-plugin": "^1.4.0",
+    "imports-loader": "^0.6.3",
+    "json-loader": "^0.5.1",
+    "style-loader": "^0.12.2",
+    "typescript": "^1.5.0-beta",
+    "typescript-simple-loader": "^0.1.2",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.9.6",
+    "webpack-dev-server": "^1.8.2"
   }
 }

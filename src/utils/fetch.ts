@@ -1,6 +1,8 @@
+/// <reference path="../../typings/tsd.d.ts" />
+
 export function status(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response;
+    return Promise.resolve(response);
   }
   return response.text().then(function(text) {
     throw new Error(text);
