@@ -19,7 +19,7 @@ let template = require('./app.html');
   directives: [LoggedInRouterOutlet]
 })
 @RouteConfig([
-  { path: '/',          as: 'home',      component: Home },
+  { path: '/home',          as: 'home',      component: Home },
   { path: '/login',     as: 'login', component: Login },
   { path: '/signup',    as: 'signup',      component: Signup }
 ])
@@ -29,7 +29,11 @@ export class App {
     // we need to manually go to the correct uri until the router is fixed
     this.router = router;
     let uri = browserLocation.path();
-    router.navigate(uri);
+    if (uri === '' || uri === '/') {
+      router.navigate('/home');
+    } else {
+      router.navigate(uri);
+    }
   }
 
   goTo(event, url) {

@@ -36,7 +36,7 @@ export class Login {
     .then(json)
     .then((response) => {
       localStorage.setItem('jwt', response.id_token);
-      this.router.navigate('/home');
+      this.router.parent.navigate('/home');
     })
     .catch((error) => {
       alert(error.message);
