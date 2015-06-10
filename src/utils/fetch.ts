@@ -2,7 +2,7 @@
 
 export function status(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response;
+    return Promise.resolve(response);
   }
   return response.text().then(function(text) {
     throw new Error(text);
@@ -14,5 +14,6 @@ export function text(response) {
 }
 
 export function json(response) {
+  debugger;
   return response.json();
 }
