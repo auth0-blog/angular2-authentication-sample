@@ -14,6 +14,5 @@ export function text(response) {
 }
 
 export function json(response) {
-  debugger;
   return response.json();
 }
