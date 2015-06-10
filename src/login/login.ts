@@ -17,10 +17,7 @@ let template = require('./login.html');
   directives: [RouterLink]
 })
 export class Login {
-  router: Router;
-
-  constructor(router: Router) {
-    this.router = router;
+  constructor(public router: Router) {
   }
 
   login(event, username, password) {
