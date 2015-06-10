@@ -39,7 +39,7 @@ export class Signup {
     .then(json)
     .then((response) => {
       localStorage.setItem('jwt', response.id_token);
-      this.router.parent.navigate('/home');
+      this.router.navigate('/home');
     })
     .catch((error) => {
       alert(error.message);
