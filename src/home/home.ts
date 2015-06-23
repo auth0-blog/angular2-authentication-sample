@@ -18,20 +18,12 @@ let template = require('./home.html');
 })
 export class Home {
   jwt: string;
-  decodedJwt: string;
   router: Router;
   response: string;
   api: string;
 
   constructor(router: Router) {
     this.router = router;
-    this.jwt = localStorage.getItem('jwt');
-    this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
-  }
-
-  logout() {
-    localStorage.removeItem('jwt');
-    this.router.parent.navigate('/login');
   }
 
   callAnonymousApi() {
@@ -48,8 +40,7 @@ export class Home {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'bearer ' + this.jwt
+        'Content-Type': 'application/json'
       }
     })
     .then(status)

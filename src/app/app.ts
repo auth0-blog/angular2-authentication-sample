@@ -6,7 +6,7 @@ import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
 import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
 import {BrowserLocation} from 'angular2/src/router/browser_location';
-import {LoggedInRouterOutlet} from './LoggedInOutlet';
+// import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 let template = require('./app.html');
 
@@ -16,12 +16,10 @@ let template = require('./app.html');
 })
 @View({
   template:`${template}`,
-  directives: [LoggedInRouterOutlet]
+  directives: [RouterOutlet]
 })
 @RouteConfig([
-  { path: '/home',          as: 'home',      component: Home },
-  { path: '/login',     as: 'login', component: Login },
-  { path: '/signup',    as: 'signup',      component: Signup }
+  { path: '/home',          as: 'home',      component: Home }
 ])
 export class App {
   router: Router;

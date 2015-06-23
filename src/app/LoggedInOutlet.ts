@@ -12,20 +12,6 @@ export class LoggedInRouterOutlet extends RouterOutlet {
     _parentRouter: Router,
     _injector: Injector,
     @Attribute('name') nameAttr: string) {
-
-      this.publicRoutes = {
-        '/login': true,
-        '/signup': true
-      };
-
       super(elementRef, _loader, _parentRouter, _injector, nameAttr);
-  }
-
-  activate(instruction) {
-    var url = this._parentRouter.lastNavigationAttempt;
-    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
-      instruction.component = Login;
-    }
-    super.activate(instruction);
   }
 }
