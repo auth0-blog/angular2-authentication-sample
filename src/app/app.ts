@@ -2,11 +2,8 @@
 
 import {View, Component} from 'angular2/angular2';
 import {Home} from '../home/home';
-import {Login} from '../login/login';
-import {Signup} from '../signup/signup';
 import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
 import {BrowserLocation} from 'angular2/src/router/browser_location';
-// import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 let template = require('./app.html');
 
