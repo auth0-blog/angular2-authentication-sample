@@ -1,6 +1,6 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {Component, View} from 'angular2/angular2';
+import {Component, View} from 'angular2/annotations';
 import {coreDirectives} from 'angular2/directives';
 import {status, text} from '../utils/fetch'
 import { Router} from 'angular2/router';

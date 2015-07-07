@@ -1,18 +1,20 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {View, Component} from 'angular2/angular2';
+import {View, Component} from 'angular2/annotations';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
 import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
-import {BrowserLocation} from 'angular2/src/router/browser_location';
+import {Location} from 'angular2/router';
+
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 let template = require('./app.html');
 
 
 @Component({
-  selector: 'auth-app'
+  selector: 'auth-app',
+  viewInjector: [Location] 
 })
 @View({
   template:`${template}`,
@@ -25,10 +27,10 @@ let template = require('./app.html');
 ])
 export class App {
   router: Router;
-  constructor(router: Router, browserLocation: BrowserLocation) {
+  constructor(router: Router, location: Location) {
     // we need to manually go to the correct uri until the router is fixed
     this.router = router;
-    let uri = browserLocation.path();
+    let uri = location.path();
     if (uri === '' || uri === '/') {
       router.navigate('/home');
     } else {
