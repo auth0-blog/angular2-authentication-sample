@@ -1,299 +1,266 @@
-declare var zone: any;
-declare var Zone: any;
+/**
+ * Angular 2
+ */
 
+declare module 'angular2/di' {
+	class Injector {}
+	var Injectable;
+	var Inject: any;
+	var InjectPromise: any;
+}
+
+declare module 'angular2/render' {
+	class NativeShadowDomStrategy {
+		constructor(styleUrlResolver: any)
+	}
+	interface EventDispatcher {
+		dispatchEvent(elementIndex: number, eventName: string, locals: Map<string, any>): any;
+	}
+	class RenderViewRef {}
+	class RenderProtoViewRef {}
+	class ShadowDomStrategy {}
+	class Renderer {
+		attachComponentView(hostViewRef: RenderViewRef, elementIndex: number, componentViewRef: RenderViewRef): any;
+		attachViewInContainer(parentViewRef: RenderViewRef, boundElementIndex: number, atIndex: number, viewRef: RenderViewRef): any;
+		callAction(viewRef: RenderViewRef, elementIndex: number, actionExpression: string, actionArgs: any): any;
+		createRootHostView(hostProtoViewRef: RenderProtoViewRef, hostElementSelector: string): RenderViewRef;
+		createView(protoViewRef: RenderProtoViewRef): RenderViewRef;
+		dehydrateView(viewRef: RenderViewRef): any;
+		destroyView(viewRef: RenderViewRef): any;
+		detachComponentView(hostViewRef: RenderViewRef, boundElementIndex: number, componentViewRef: RenderViewRef): any;
+		detachFreeView(view: RenderViewRef): any;
+		detachViewInContainer(parentViewRef: RenderViewRef, boundElementIndex: number, atIndex: number, viewRef: RenderViewRef): any;
+		hydrateView(viewRef: RenderViewRef): any;
+		setElementProperty(viewRef: RenderViewRef, elementIndex: number, propertyName: string, propertyValue: any): any;	
+		setEventDispatcher(viewRef: RenderViewRef, dispatcher: EventDispatcher): any;
+		setText(viewRef: RenderViewRef, textNodeIndex: number, text: string): any;
+	}
+}
+
+declare module 'angular2/core' {
+	import { RenderViewRef } from 'angular2/render';
+	class DynamicComponentLoader {}
+	class Injector {}
+	class ViewRef {
+		render: RenderViewRef;
+	}
+	class ProtoViewRef {}
+	class ViewContainerRef {
+		create(protoViewRef?: ProtoViewRef, atIndex?: number, context?: ElementRef, injector?: Injector): ViewRef;
+		element: ElementRef;
+	}
+	class ElementRef {
+    	boundElementIndex: number;
+    	nativeElement: any;
+    	getAttribute(name: string): string;
+    	parentView: ViewRef;
+  	}
+	class BaseQueryList<T> {
+		add(obj: any): any;
+		fireCallbacks(): any;
+		onChange(callback: any): any;
+		removeCallback(callback: any): any;
+		reset(newList: any): any;
+	}
+	class QueryList<T> extends  BaseQueryList<T> {
+		onChange(callback: any): any;
+		removeCallback(callback: any): any;
+	}
+}
+
+declare module 'angular2/src/facade/async' {
+	class Observable {
+		observer(generator: any): Object
+	}
+	class ObservableWrapper {
+		static subscribe(emitter: Observable, onNext: Function, onThrow?: Function, onReturn?: Function): Object;
+		static dispose(subscription: any): void;
+		static callNext(emitter: EventEmitter, value: any): void;
+		static callThrow(emitter: EventEmitter, error: any): void;
+	}
+	class EventEmitter extends  Observable {
+		next(value: any): any;
+		observer(generator: any): any;
+		return(value: any): any;
+		throw(error: any): any;
+		toRx(): Rx.Observable<any>;
+	}
+}
+
+declare module 'angular2/src/facade/browser' {
+	var document: any;
+	const KeyboardEvent;
+}
+
+declare module 'angular2/src/facade/lang' {
+	class BaseException {
+		constructor(message: string);
+	}
+	class FunctionWrapper {
+		static apply(fn: Function, posArgs?: Array<any>): any
+	}
+	class StringWrapper {
+		static toLowerCase(s: string): string
+	}
+	class NumberWrapper {
+		static parseInt(text: string, radix: number): number;
+		static isNaN(value: any): boolean;
+	}
+	function isBlank (obj: any): boolean;
+	function isJsObject(obj: any): boolean;
+	function isPresent(obj: any): boolean;
+	function isFunction(obj: any): boolean;
+	function isString(obj: any): boolean;
+}
+
+declare module "angular2/annotations" {
+	var Attribute: any;
+	var Parent: any;
+	var Query: any;
+	const onDestroy;
+	function Directive(arg: any): (target: any) => any;
+	function Component(arg: any): (target: any) => any;
+	function View(arg: any): (target: any) => any;
+}
 
 declare module "angular2/change_detection" {
-  class Pipe {}
-  class NullPipeFactory {}
-  class PipeRegistry {
-    constructor(pipes: any)
-  }
-  class JitChangeDetection {}
-  class ChangeDetection {}
-  class DynamicChangeDetection {}
-  var defaultPipes: any;
-}
-
-
-declare module "angular2/src/core/zone/ng_zone" {
-  class NgZone {
-    runOutsideAngular(func: Function): any
-  }
-}
-
-declare module 'angular2/src/services/url_resolver' {
-  class UrlResolver {}
-}
-
-declare module "angular2/src/facade/async" {
-  class Observable {}
-  class EventEmitter {
-    next(val:any)
-    return(val:any)
-    throw(val:any)
-  }
-  class PromiseWrapper {
-
-  }
-}
-
-declare module "angular2/src/render/dom/shadow_dom/style_url_resolver" {
-  class StyleUrlResolver {}
-}
-
-declare module "angular2/src/core/life_cycle/life_cycle" {
-  class LifeCycle {
-    tick(): any;
-  }
-}
-
-declare module "zone.js" {
-  var zone: any;
-  var Zone: any;
+	interface Pipe {
+		supports(obj): boolean;
+		onDestroy(): void;
+		transform(value: any): any;
+	}
+	interface PipeFactory {
+		supports(obs): boolean;
+		create(cdRef): Pipe;
+	}
+	class NullPipeFactory implements PipeFactory {
+		supports(obj): boolean;
+		create(cdRef): Pipe;
+	}
+	class PipeRegistry {
+		constructor(pipes: any)
+	}
+	class BasePipe implements Pipe {
+		supports(obj): boolean;
+		onDestroy(): void;
+		transform(value: any): any;
+	}
+	class JitChangeDetection {}
+	class ChangeDetection {}
+	class DynamicChangeDetection {}
+	var defaultPipes: any;
 }
 
 declare module "angular2/directives" {
-  function NgSwitch(): void;
-  function NgSwitchWhen(): void;
-  function NgSwitchDefault(): void;
-  function NgNonBindable(): void;
-  function NgIf(): void;
-  function NgFor(): void;
-
-  var formDirectives: any;
-  var coreDirectives: any;
-
+	class NgFor {}
+	class NgIf {}
 }
 
 declare module "angular2/forms" {
-  var formDirectives: any;
-  class FormBuilder {
-    group(controls: any): any;
-  }
-  class Control {
-    constructor(controls: any)
-    updateValue(value: any)
-    _valueChanges: any
-    valueChanges: any
-  }
-  class ControlArray {
-    removeAt(index: any)
-    push(item: any)
-  }
-  class ControlGroup {
-    constructor(controls: any)
-    controls: any;
-    valueChanges: any;
-  }
-  class Validators {
-    static required: any;
-  }
+	class CheckboxControlValueAccessor {}
+	interface ControlValueAccessor {
+		registerOnChange(fn: any): void;
+		registerOnTouched(fn: any): void;
+		writeValue(obj: any): void;
+	}
+	class DefaultValueAccessor {}
+	
+	class NgControl {
+		valueAccessor: ControlValueAccessor;
+		control: Control;
+	}
+	class NgControlGroup {}
+	class NgControlName {}
+	class NgForm {}
+	class NgFormControl {}
+	class NgFormModel {}
+	class NgModel {}
+	class NgRequiredValidator {}
+	class FormBuilder {
+		group(controls: any): any
+		controls: any;
+	}
+	class AbstractControl {
+		dirty: boolean;
+		touched: boolean;
+		untouched: boolean;
+		valueChanges: any;
+		valid: boolean;
+		pristine: boolean;
+	}
+	class Control extends AbstractControl {
+		constructor(controls: any);
+		updateValue(value: any);
+	}
+	class ControlGroup {
+		constructor(controls: any)
+		controls: any;
+		valueChanges: any;
+	}
+	class Validators {
+		static required: any;
+	}
+	const formInjectables: any;
+	const formDirectives: any;
 }
 
-declare module "angular2/render" {
-  class EmulatedScopedShadowDomStrategy {
-    constructor(styleInliner: any, styleUrlResolver: any, styleHost: any)
-  }
-  class EmulatedUnscopedShadowDomStrategy {
-    constructor(styleUrlResolver: any, styleHost: any)
-  }
-  class NativeShadowDomStrategy {
-    constructor(styleUrlResolver: any)
-  }
-  class ShadowDomStrategy {}
+declare module 'angular2/src/http/static_response' {
+	class Response {
+		headers: any;
+		text(): string;
+	}
 }
 
-declare module "angular2/src/facade/browser" {
-  var __esModule: boolean;
-  var win: any;
-  var document: any;
-  var location: any;
-  var gc: () => void;
-  const Event: any;
-  const MouseEvent: any;
-  const KeyboardEvent: any;
+declare module 'angular2/http' {
+	class Http {}
+	const httpInjectables: any;
 }
 
-declare module "angular2/src/router/browser_location" {
-  class BrowserLocation {
-    path(): string
-  }
-}
-
-declare module "angular2/src/router/location" {
-  class Location {
-    normalize(url: string): string
-  }
-}
-
-declare module "angular2/router" {
-  class Instruction {}
-  class Router {
-    _registry: any;
-    _pipeline: any;
-    hostComponent: any;
-    navigating: boolean;
-    lastNavigationAttempt: string;
-    previousUrl: string;
-    _currentInstruction: any;
-    _outlets: any;
-    _subject: any;
-    navigate(url: string): Promise<any>;
-    config(config: any): Promise<any>;
-    deactivate(): Promise<any>;
-    activate(instruction: Instruction): Promise<any>;
-    recognize(url: string): Instruction;
-    recognize(url: string): Instruction;
-    renavigate(): Promise<any>;
-    generate(name:string, params:any): string;
-    subscribe(onNext: Function): void;
-    parent: Router;
-  }
-  class RouterOutlet {
-    constructor(elementRef: any, _loader: any, _parentRouter: any, _injector: any, nameAttr: any)
-    _loader: any;
-    _parentRouter: any;
-    _injector: any;
-    _childRouter: any;
-    _componentRef: any;
-    _elementRef: any;
-    _currentInstruction: any;
-    /**
-     * Given an instruction, update the contents of this viewport.
-     */
-    activate(instruction: any): any;
-    deactivate(): any;
-    canDeactivate(instruction: any): any;
-  }
-  class RouteParams {}
-  var RouterLink: any;
-  var routerInjectables: any;
-  var RouteConfigAnnotation: any;
-  var RouteConfig: any;
+declare module 'angular2/router' {
+	class Instruction {}
+	class Router {
+		navigate(url: string): Promise<any>
+		config(config: any): Promise<any>
+		subscribe(onNext: Function): Promise<any>
+	}
+	class LocationStrategy {}
+	class HashLocationStrategy {}
+	class Location {
+		path(): string;
+	}
+	var RouterOutlet: any;
+	var RouterLink: any;
+	var routerInjectables: any;
+	var RouteConfig: any;
 }
 
 
-declare module "angular2/src/dom/browser_adapter" {
-    class BrowserDomAdapter {
-        static makeCurrent(): void;
-        logError(error: any): void;
-        attrToPropMap: any;
-        query(selector: string): any;
-        querySelector(el: any, selector: string): Node;
-        querySelectorAll(el: any, selector: string): List<any>;
-        on(el: any, evt: any, listener: any): void;
-        onAndCancel(el: any, evt: any, listener: any): Function;
-        dispatchEvent(el: any, evt: any): void;
-        createMouseEvent(eventType: string): MouseEvent;
-        createEvent(eventType: any): Event;
-        getInnerHTML(el: any): any;
-        getOuterHTML(el: any): any;
-        nodeName(node: Node): string;
-        nodeValue(node: Node): string;
-        type(node: HTMLInputElement): string;
-        content(node: Node): Node;
-        firstChild(el: any): Node;
-        nextSibling(el: any): Node;
-        parentElement(el: any): any;
-        childNodes(el: any): List<Node>;
-        childNodesAsList(el: any): List<any>;
-        clearNodes(el: any): void;
-        appendChild(el: any, node: any): void;
-        removeChild(el: any, node: any): void;
-        replaceChild(el: Node, newChild: any, oldChild: any): void;
-        remove(el: any): any;
-        insertBefore(el: any, node: any): void;
-        insertAllBefore(el: any, nodes: any): void;
-        insertAfter(el: any, node: any): void;
-        setInnerHTML(el: any, value: any): void;
-        getText(el: any): any;
-        setText(el: any, value: string): void;
-        getValue(el: any): any;
-        setValue(el: any, value: string): void;
-        getChecked(el: any): any;
-        setChecked(el: any, value: boolean): void;
-        createTemplate(html: any): HTMLElement;
-        createElement(tagName: any, doc?: Document): HTMLElement;
-        createTextNode(text: string, doc?: Document): Text;
-        createScriptTag(attrName: string, attrValue: string, doc?: Document): HTMLScriptElement;
-        createStyleElement(css: string, doc?: Document): HTMLStyleElement;
-        createShadowRoot(el: HTMLElement): DocumentFragment;
-        getShadowRoot(el: HTMLElement): DocumentFragment;
-        getHost(el: HTMLElement): HTMLElement;
-        clone(node: Node): Node;
-        hasProperty(element: any, name: string): boolean;
-        getElementsByClassName(element: any, name: string): any;
-        getElementsByTagName(element: any, name: string): any;
-        classList(element: any): List<any>;
-        addClass(element: any, classname: string): void;
-        removeClass(element: any, classname: string): void;
-        hasClass(element: any, classname: string): any;
-        setStyle(element: any, stylename: string, stylevalue: string): void;
-        removeStyle(element: any, stylename: string): void;
-        getStyle(element: any, stylename: string): any;
-        tagName(element: any): string;
-        attributeMap(element: any): any;
-        hasAttribute(element: any, attribute: string): any;
-        getAttribute(element: any, attribute: string): any;
-        setAttribute(element: any, name: string, value: string): void;
-        removeAttribute(element: any, attribute: string): any;
-        templateAwareRoot(el: any): any;
-        createHtmlDocument(): Document;
-        defaultDoc(): Document;
-        getBoundingClientRect(el: any): any;
-        getTitle(): string;
-        setTitle(newTitle: string): void;
-        elementMatches(n: any, selector: string): boolean;
-        isTemplateElement(el: any): boolean;
-        isTextNode(node: Node): boolean;
-        isCommentNode(node: Node): boolean;
-        isElementNode(node: Node): boolean;
-        hasShadowRoot(node: any): boolean;
-        isShadowRoot(node: any): boolean;
-        importIntoDoc(node: Node): Node;
-        isPageRule(rule: any): boolean;
-        isStyleRule(rule: any): boolean;
-        isMediaRule(rule: any): boolean;
-        isKeyframesRule(rule: any): boolean;
-        getHref(el: Element): string;
-        getEventKey(event: any): string;
-        getGlobalEventTarget(target: string): EventTarget;
-        getHistory(): History;
-        getLocation(): Location;
-        getBaseHref(): any;
-    }
+/**
+ * ES6
+ * 
+ * Sources:
+ * - [maps]{@link https://github.com/Microsoft/TypeScript/issues/3290}
+ */
+ 
+interface Map<K, V> {
+    clear(): void;
+    delete(key: K): boolean;
+    forEach(callbackfn: (value: V, index: K, map: Map<K, V>) => void, thisArg?: any): void;
+    get(key: K): V;
+    has(key: K): boolean;
+    set(key: K, value: V): Map<K, V>;
+    size: number;
 }
 
-declare module "angular2/di" {
+declare var Map: {
+    new <K, V>(...items: Array<any>): Map<K, V>;
+    prototype: Map<any, any>;
+}
+ 
+interface ObjectConstructor {
+	assign(target: any, ...sources: any[]): any
+}
 
-  function bind(token: any): any;
-  class Injector {
-     resolveAndCreateChild(bindings: [any]): Injector;
-  }
-  var Binding: any;
-  var ResolvedBinding: any;
-  var Dependency: any;
-  var Key: any;
-  var KeyRegistry: any;
-  var TypeLiteral: any;
-  var NoBindingError: any;
-  var AbstractBindingError: any;
-  var AsyncBindingError: any;
-  var CyclicDependencyError: any;
-  var InstantiationError: any;
-  var InvalidBindingError: any;
-  var NoAnnotationError: any;
-  var OpaqueToken: any;
-  var ___esModule: any;
-  var InjectAnnotation: any;
-  var InjectPromiseAnnotation: any;
-  var InjectLazyAnnotation: any;
-  var OptionalAnnotation: any;
-  var InjectableAnnotation: any;
-  var DependencyAnnotation: any;
-  var Inject: any;
-  var InjectPromise: any;
-  var InjectLazy: any;
-  var Optional: any;
-  var Injectable: any;
+interface ArrayConstructor {
+	from(...sources: any[]): any
 }
