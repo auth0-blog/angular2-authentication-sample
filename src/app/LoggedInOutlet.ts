@@ -8,6 +8,7 @@ import * as routerMod from 'angular2/router';
 
 @Directive({selector: 'router-outlet'})
 export class LoggedInRouterOutlet extends routerMod.RouterOutlet {
+  
   publicRoutes: any
   constructor(
     elementRef: ElementRef,

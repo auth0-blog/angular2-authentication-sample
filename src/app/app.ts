@@ -4,13 +4,11 @@ import {View, Component} from 'angular2/annotations';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
-import {RouteConfig, RouterOutlet, RouterLink, Router} from 'angular2/router';
+import {Router, RouteConfig} from 'angular2/router';
 import {Location} from 'angular2/router';
-
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 let template = require('./app.html');
-
 
 @Component({
   selector: 'auth-app',
@@ -21,20 +19,20 @@ let template = require('./app.html');
   directives: [LoggedInRouterOutlet]
 })
 @RouteConfig([
-  { path: '/home',          as: 'home',      component: Home },
+  { path: '/home',      as: 'home',      component: Home },
   { path: '/login',     as: 'login', component: Login },
   { path: '/signup',    as: 'signup',      component: Signup }
 ])
 export class App {
   router: Router;
-  constructor(router: Router, location: Location) {
+  constructor(router:Router, location: Location) {
     // we need to manually go to the correct uri until the router is fixed
     this.router = router;
     let uri = location.path();
     if (uri === '' || uri === '/') {
       router.navigate('/home');
-    } else {
-      router.navigate(uri);
+    //} else {
+      //router.navigate(uri);
     }
   }
 
