@@ -13,18 +13,17 @@ let template = require('./home.html');
   selector: 'home'
 })
 @View({
-  template:`<style>${styles}</style>\n${template}`,
-  directives: [coreDirectives]
+  styles: [ styles ],
+  template: template,
+  directives: [ coreDirectives ]
 })
 export class Home {
   jwt: string;
   decodedJwt: string;
-  router: Router;
   response: string;
   api: string;
 
-  constructor(router: Router) {
-    this.router = router;
+  constructor(public router: Router) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }

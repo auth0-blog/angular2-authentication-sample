@@ -12,15 +12,12 @@ let template = require('./signup.html');
   selector: 'signup'
 })
 @View({
-  directives: [RouterLink, coreDirectives],
-  template:`<style>${styles}</style>\n${template}`
-
+  directives: [ RouterLink, coreDirectives ],
+  styles: [ styles ],
+  template: template
 })
 export class Signup {
-  router: Router;
-
-  constructor(router: Router) {
-    this.router = router;
+  constructor(public router: Router) {
   }
 
   signup(event, username, password) {
