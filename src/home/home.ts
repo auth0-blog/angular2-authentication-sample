@@ -2,7 +2,8 @@
 
 import {Component, View} from 'angular2/angular2';
 import {coreDirectives} from 'angular2/directives';
-import {status, text} from '../utils/fetch'
+import {status, text} from '../utils/fetch';
+import {Http} from 'angular2/http';
 import { Router} from 'angular2/router';
 
 let styles   = require('./home.css');
@@ -23,7 +24,7 @@ export class Home {
   response: string;
   api: string;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public http: Http) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
@@ -43,22 +44,24 @@ export class Home {
   _callApi(type, url) {
     this.response = null;
     this.api = type;
-    window.fetch(url, {
-      method: 'GET',
+    this.http.get(url, {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'bearer ' + this.jwt
       }
     })
-    .then(status)
-    .then(text)
-    .then((response) => {
-      this.response = response;
-    })
-    .catch((error) => {
-      this.response = error.message;
-    });
+    .toRx()
+    .map(status)
+    .map(text)
+    .subscribe(
+      response => {
+          this.response = response;
+      },
+      error => {
+          this.response = error.message;
+      }
+    )
   }
 
 }
