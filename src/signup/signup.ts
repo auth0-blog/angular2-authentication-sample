@@ -1,9 +1,7 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../typings/custom.d.ts" />
 
-import {coreDirectives} from 'angular2/directives';
-import {Component, View} from 'angular2/angular2';
+import {Component, View, coreDirectives, Http, Headers} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
-import {Http} from 'angular2/http';
 import { Router, RouterLink } from 'angular2/router';
 
 let styles   = require('./signup.css');
@@ -23,15 +21,17 @@ export class Signup {
 
   signup(event, username, password) {
     event.preventDefault();
-    this.http.post('http://localhost:3001/users', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    var headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    this.http.post('http://localhost:3001/users',
+      JSON.stringify({
         username, password
-      })
-    })
+      }),
+      {
+        headers: headers
+      }
+    )
     .toRx()
     .map(status)
     .map(json)

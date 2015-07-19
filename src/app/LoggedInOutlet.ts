@@ -1,6 +1,6 @@
-import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/angular2';
+/// <reference path="../typings/custom.d.ts" />
+import {Directive, Attribute, ElementRef, DynamicComponentLoader, Injector} from 'angular2/angular2';
 import {Router, RouterOutlet} from 'angular2/router';
-import {Injector} from 'angular2/di';
 import {Login} from '../login/login';
 
 @Directive({
@@ -19,11 +19,11 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
   }
 
-  activate(instruction) {
+  commit(instruction) {
     var url = this._parentRouter.lastNavigationAttempt;
     if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
       instruction.component = Login;
     }
-    return super.activate(instruction);
+    return super.commit(instruction);
   }
 }

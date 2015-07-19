@@ -1,9 +1,7 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../typings/custom.d.ts" />
 
-import {Component, View} from 'angular2/angular2';
-import {coreDirectives} from 'angular2/directives';
+import {Component, View, coreDirectives, Http, Headers} from 'angular2/angular2';
 import {status, text} from '../utils/fetch';
-import {Http} from 'angular2/http';
 import { Router} from 'angular2/router';
 
 let styles   = require('./home.css');
@@ -44,13 +42,11 @@ export class Home {
   _callApi(type, url) {
     this.response = null;
     this.api = type;
-    this.http.get(url, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'bearer ' + this.jwt
-      }
-    })
+    var headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'bearer ' + this.jwt);
+    this.http.get(url, {headers: headers})
     .toRx()
     .map(status)
     .map(text)
