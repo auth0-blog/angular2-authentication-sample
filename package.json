@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
-    "angular2": "2.0.0-alpha.30",
+    "angular2": "2.0.0-alpha.31",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.29",
+    "rtts_assert": "2.0.0-alpha.31",
     "rx": "^2.5.3",
     "zone.js": "^0.5.0",
     "bootstrap": "~3.3.4",

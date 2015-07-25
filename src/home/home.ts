@@ -1,8 +1,7 @@
-/// <reference path="../../typings/tsd.d.ts" />
+/// <reference path="../typings/custom.d.ts" />
 
-import {Component, View} from 'angular2/angular2';
-import {coreDirectives} from 'angular2/directives';
-import {status, text} from '../utils/fetch'
+import {Component, View, coreDirectives, Http, Headers} from 'angular2/angular2';
+import {status, text} from '../utils/fetch';
 import { Router} from 'angular2/router';
 
 let styles   = require('./home.css');
@@ -23,7 +22,7 @@ export class Home {
   response: string;
   api: string;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public http: Http) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
@@ -43,22 +42,22 @@ export class Home {
   _callApi(type, url) {
     this.response = null;
     this.api = type;
-    window.fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'bearer ' + this.jwt
+    var headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'bearer ' + this.jwt);
+    this.http.get(url, {headers: headers})
+    .toRx()
+    .map(status)
+    .map(text)
+    .subscribe(
+      response => {
+          this.response = response;
+      },
+      error => {
+          this.response = error.message;
       }
-    })
-    .then(status)
-    .then(text)
-    .then((response) => {
-      this.response = response;
-    })
-    .catch((error) => {
-      this.response = error.message;
-    });
+    )
   }
 
 }
