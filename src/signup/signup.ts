@@ -1,9 +1,9 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 import {coreDirectives} from 'angular2/directives';
-import {Component, View} from 'angular2/angular2';
+import {Component, View, Inject} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
-import { Router, RouterLink } from 'angular2/router';
+import {Router, RouterLink } from 'angular2/router';
 
 let styles   = require('./signup.css');
 let template = require('./signup.html');
@@ -16,8 +16,12 @@ let template = require('./signup.html');
   styles: [ styles ],
   template: template
 })
+
 export class Signup {
-  constructor(public router: Router) {
+  router: Router;
+
+  constructor(@Inject(Router) router: Router) {
+      this.router = router;
   }
 
   signup(event, username, password) {
