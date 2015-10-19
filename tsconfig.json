@@ -3,20 +3,20 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": false,
+    "declaration": true,
     "noImplicitAny": false,
-    "removeComments": true,
+    "removeComments": false,
     "noLib": false,
     "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
     "listFiles": true,
     "outDir": "dist"
   },
+  "exclude": [
+    "node_modules"
+  ],
   "files": [
-    "node_modules/typescript/bin/dom.d.ts",
-    "src/custom_typings/ng2.d.ts",
-    "typings/tsd.d.ts",
-    "src/components/app.ts",
-    "src/bootstrap.ts"
+    "src/index.ts"
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "name": "in-memory-todo",
+  "version": "0.1.0",
+  "description": "An In memory todo for Logged in and not Logged in users",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/auth0/in-memory-todo.git"
+  },
+  "keywords": [
+    "todo",
+    "in",
+    "memory",
+    "jwt",
+    "auth0"
+  ],
+  "author": "Martin Gontovnikas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/in-memory-todo/issues"
+  },
+  "homepage": "https://github.com/auth0/in-memory-todo",
+  "dependencies": {
+    "body-parser": "^1.6.5",
+    "compression": "^1.0.11",
+    "cors": "^2.4.1",
+    "dotenv": "^0.4.0",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.5",
+    "express-jwt": "^0.3.1",
+    "jsonwebtoken": "^1.1.2",
+    "lodash": "^2.4.1",
+    "morgan": "^1.2.3"
+  }
+}

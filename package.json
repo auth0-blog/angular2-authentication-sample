@@ -4,7 +4,9 @@
   "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "server": "cd backend && npm i && node server.js",
+    "front": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "start": "npm run front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,32 +23,32 @@
   },
   "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
-    "angular2": "2.0.0-alpha.30",
-    "raw-loader": "^0.5.1",
-    "reflect-metadata": "^0.1.0",
-    "rtts_assert": "2.0.0-alpha.29",
-    "rx": "^2.5.3",
-    "zone.js": "^0.5.0",
-    "bootstrap": "~3.3.4",
-    "jwt-decode": "~1.1.0",
-    "whatwg-fetch": "~0.7.0",
-    "when": "~3.7.3"
+    "angular2": "2.0.0-alpha.44",
+    "raw-loader": "0.5.1",
+    "reflect-metadata": "0.1.2",
+    "rtts_assert": "2.0.0-alpha.37",
+    "rx": "4.0.6",
+    "zone.js": "0.5.8",
+    "bootstrap": "3.3.5",
+    "jwt-decode": "1.4.0",
+    "whatwg-fetch": "0.10.0",
+    "when": "3.7.3"
   },
   "devDependencies": {
-    "css-loader": "^0.14.4",
-    "xtend": "^4.0.0",
-    "loader-utils": "^0.2.9",
-    "exports-loader": "^0.6.2",
-    "expose-loader": "^0.7.0",
-    "file-loader": "^0.8.1",
-    "html-webpack-plugin": "^1.4.0",
-    "imports-loader": "^0.6.3",
-    "json-loader": "^0.5.1",
-    "style-loader": "^0.12.2",
-    "typescript": "^1.5.0-beta",
-    "typescript-simple-loader": "^0.1.2",
-    "url-loader": "^0.5.5",
-    "webpack": "^1.9.6",
-    "webpack-dev-server": "^1.8.2"
+    "css-loader": "0.20.1",
+    "exports-loader": "0.6.2",
+    "expose-loader": "0.7.0",
+    "file-loader": "0.8.4",
+    "html-webpack-plugin": "1.6.2",
+    "imports-loader": "0.6.5",
+    "json-loader": "0.5.3",
+    "loader-utils": "0.2.11",
+    "style-loader": "0.12.4",
+    "ts-loader": "0.5.6",
+    "typescript": "1.6.2",
+    "url-loader": "0.5.6",
+    "webpack": "1.12.2",
+    "webpack-dev-server": "1.12.1",
+    "xtend": "4.0.0"
   }
 }

@@ -27,6 +27,7 @@ build/Release
 ehthumbs.db
 Icon?
 Thumbs.db
+.idea
 
 # Node Files #
 node_modules

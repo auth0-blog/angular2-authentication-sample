@@ -1,21 +1,17 @@
-/// <reference path="../../typings/tsd.d.ts" />
-
 import {Component, View} from 'angular2/angular2';
-import {status, json} from '../utils/fetch'
 import { Router, RouterLink } from 'angular2/router';
-
+import {status, json} from '../utils/fetch'
 
 let styles   = require('./login.css');
 let template = require('./login.html');
-
 
 @Component({
   selector: 'login'
 })
 @View({
-  styles: [ styles ],
+  directives: [RouterLink],
   template: template,
-  directives: [RouterLink]
+  styles: [ styles ]
 })
 export class Login {
   constructor(public router: Router) {
@@ -35,9 +31,9 @@ export class Login {
     })
     .then(status)
     .then(json)
-    .then((response) => {
+    .then((response:any) => {
       localStorage.setItem('jwt', response.id_token);
-      this.router.parent.navigate('/home');
+      this.router.parent.navigateByUrl('/home');
     })
     .catch((error) => {
       alert(error.message);
@@ -47,6 +43,6 @@ export class Login {
 
   signup(event) {
     event.preventDefault();
-    this.router.parent.navigate('/signup');
+    this.router.parent.navigateByUrl('/signup');
   }
 }

@@ -3,7 +3,7 @@
 // Definitions by: Ryan Graham <https://github.com/ryan-codingintrigue>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-/// <reference path="../es6-promise/es6-promise.d.ts" />
+/// <reference path="../../node_modules/angular2/typings/es6-shim/es6-shim.d.ts" />
 
 declare class Request {
   constructor(input: string|Request, init?:RequestInit);
