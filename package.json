@@ -34,19 +34,19 @@
   },
   "devDependencies": {
     "css-loader": "0.20.1",
-    "xtend": "4.0.0",
-    "loader-utils": "0.2.11",
     "exports-loader": "0.6.2",
     "expose-loader": "0.7.0",
     "file-loader": "0.8.4",
     "html-webpack-plugin": "1.6.2",
     "imports-loader": "0.6.5",
     "json-loader": "0.5.3",
+    "loader-utils": "0.2.11",
     "style-loader": "0.12.4",
+    "ts-loader": "0.5.6",
     "typescript": "1.6.2",
-    "typescript-simple-loader": "0.3.8",
     "url-loader": "0.5.6",
     "webpack": "1.12.2",
-    "webpack-dev-server": "1.12.1"
+    "webpack-dev-server": "1.12.1",
+    "xtend": "4.0.0"
   }
 }

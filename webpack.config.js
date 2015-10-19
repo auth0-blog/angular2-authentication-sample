@@ -12,16 +12,13 @@ module.exports = {
     angular2: [
       // Angular 2 Deps
       'zone.js',
-      // 'zone.js/dist/long-stack-trace-zone.js',
       'reflect-metadata',
-      'rtts_assert/rtts_assert',
 
-      './src/common/BrowserDomAdapter',
+      //'./src/common/BrowserDomAdapter',
 
       'angular2/angular2',
       'angular2/router',
-      'angular2/di',
-      'angular2/src/facade/browser'
+      'angular2/core'
     ],
     app: [
       // App
@@ -57,7 +54,7 @@ module.exports = {
       // we can switch between development and production
       // 'angular2': 'angular2/es6/prod',
       // 'angular2': 'angular2/es6/dev',
-      'webapp': 'src'
+      //'webapp': 'src'
     }
   },
 
@@ -73,7 +70,7 @@ module.exports = {
       { test: /\.html$/,  loader: 'raw' },
 
       // Support for .ts files.
-      { test: /\.ts$/,    loader: 'typescript-simple' }
+      { test: /\.ts$/,    loader: 'ts' }
     ],
     noParse: [
       /rtts_assert\/src\/rtts_assert/

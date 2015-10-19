@@ -1,18 +1,14 @@
-/// <reference path="../typings/tsd.d.ts" />
-
-import { bootstrap } from 'angular2/angular2';
-import { bind } from 'angular2/di';
-import { routerInjectables } from 'angular2/router';
-import { formInjectables } from 'angular2/forms';
-import { httpInjectables } from 'angular2/http';
+import { bootstrap, FORM_PROVIDERS } from 'angular2/angular2';
+import { ROUTER_PROVIDERS } from 'angular2/router';
+import { HTTP_PROVIDERS } from 'angular2/http';
 
 import { App } from './app/app';
 
 bootstrap(
   App,
   [
-    formInjectables,
-    routerInjectables,
-    httpInjectables
+    FORM_PROVIDERS,
+    ROUTER_PROVIDERS,
+    HTTP_PROVIDERS
   ]
 );

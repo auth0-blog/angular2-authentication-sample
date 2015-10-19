@@ -1,7 +1,4 @@
-/// <reference path="../../typings/tsd.d.ts" />
-
-import {coreDirectives} from 'angular2/directives';
-import {Component, View} from 'angular2/angular2';
+import {CORE_DIRECTIVES, Component, View} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
 import { Router, RouterLink } from 'angular2/router';
 
@@ -12,9 +9,9 @@ let template = require('./signup.html');
   selector: 'signup'
 })
 @View({
-  directives: [ RouterLink, coreDirectives ],
-  styles: [ styles ],
-  template: template
+  directives: [ RouterLink, CORE_DIRECTIVES ],
+  template: template,
+  styles: [ styles ]
 })
 export class Signup {
   constructor(public router: Router) {
@@ -36,7 +33,7 @@ export class Signup {
     .then(json)
     .then((response) => {
       localStorage.setItem('jwt', response.id_token);
-      this.router.navigate('/home');
+      this.router.navigate(['/home']);
     })
     .catch((error) => {
       alert(error.message);
@@ -46,7 +43,7 @@ export class Signup {
 
   login(event) {
     event.preventDefault();
-    this.router.parent.navigate('/login');
+    this.router.parent.navigate(['/login']);
   }
 
 }
