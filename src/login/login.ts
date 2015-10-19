@@ -31,9 +31,9 @@ export class Login {
     })
     .then(status)
     .then(json)
-    .then((response) => {
+    .then((response:any) => {
       localStorage.setItem('jwt', response.id_token);
-      this.router.parent.navigate(['/home']);
+      this.router.parent.navigateByUrl('/home');
     })
     .catch((error) => {
       alert(error.message);
@@ -43,6 +43,6 @@ export class Login {
 
   signup(event) {
     event.preventDefault();
-    this.router.parent.navigate(['/signup']);
+    this.router.parent.navigateByUrl('/signup');
   }
 }
