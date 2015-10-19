@@ -4,7 +4,9 @@
   "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "server": "cd backend && npm i && node server.js",
+    "front": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "start": "npm run front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
