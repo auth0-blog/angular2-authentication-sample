@@ -47,7 +47,7 @@ export class Home {
       this.http.get(url)
         .subscribe(
           response => this.response = response.text(),
-          error => this.response = error.json().message
+          error => this.response = error.text()
         );
     }
     if (type === 'Secured') {
@@ -55,7 +55,7 @@ export class Home {
       this.authHttp.get(url)
         .subscribe(
           response => this.response = response.text(),
-          error => this.response = error.json().message
+          error => this.response = error.text()
         );
     }
   }

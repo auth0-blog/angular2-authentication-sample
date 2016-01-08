@@ -29,8 +29,8 @@ export class Login {
           this.router.parent.navigateByUrl('/home');
         },
         error => {
-          alert(error.json().message);
-          console.log(error.json().message);
+          alert(error.text());
+          console.log(error.text());
         }
       );
   }
