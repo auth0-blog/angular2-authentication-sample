@@ -1,6 +1,6 @@
 {
   "name": "angular2-authentication-sample",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
   "main": "",
   "scripts": {
@@ -15,7 +15,8 @@
   },
   "contributors": [
     "Martin Gontovnikas (http://gon.to) <martin@gon.to>",
-    "PatrickJS <github@gdi2290.com>"
+    "PatrickJS <github@gdi2290.com>",
+    "Ryan Chenkie <ryanchenkie@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -23,32 +24,34 @@
   },
   "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
-    "angular2": "2.0.0-alpha.44",
-    "raw-loader": "0.5.1",
-    "reflect-metadata": "0.1.2",
-    "rtts_assert": "2.0.0-alpha.37",
-    "rx": "4.0.6",
-    "zone.js": "0.5.8",
-    "bootstrap": "3.3.5",
-    "jwt-decode": "1.4.0",
-    "whatwg-fetch": "0.10.0",
-    "when": "3.7.3"
+    "angular2": "2.0.0-beta.0",
+    "angular2-jwt": "0.1.4",
+    "bootstrap": "^3.3.6",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "^0.33.3",
+    "es7-reflect-metadata": "^1.4.0",
+    "jwt-decode": "^1.5.0",
+    "rxjs": "5.0.0-beta.0",
+    "zone.js": "0.5.10"
   },
   "devDependencies": {
-    "css-loader": "0.20.1",
+    "css-loader": "^0.23.0",
     "exports-loader": "0.6.2",
-    "expose-loader": "0.7.0",
-    "file-loader": "0.8.4",
-    "html-webpack-plugin": "1.6.2",
-    "imports-loader": "0.6.5",
-    "json-loader": "0.5.3",
-    "loader-utils": "0.2.11",
-    "style-loader": "0.12.4",
-    "ts-loader": "0.5.6",
-    "typescript": "1.6.2",
-    "url-loader": "0.5.6",
-    "webpack": "1.12.2",
-    "webpack-dev-server": "1.12.1",
-    "xtend": "4.0.0"
+    "expose-loader": "^0.7.1",
+    "file-loader": "^0.8.4",
+    "imports-loader": "^0.6.4",
+    "json-loader": "^0.5.3",
+    "raw-loader": "0.5.1",
+    "style-loader": "^0.13.0",
+    "ts-loader": "^0.7.2",
+    "tsconfig-lint": "^0.2.0",
+    "tslint": "^3.2.0",
+    "tslint-loader": "^2.1.0",
+    "typedoc": "^0.3.12",
+    "typescript": "^1.7.3",
+    "typings": "^0.3.1",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.12.1"
   }
 }

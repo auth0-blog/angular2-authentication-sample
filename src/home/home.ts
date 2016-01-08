@@ -1,7 +1,8 @@
-import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
+import { Component, View } from 'angular2/core';
+import { CORE_DIRECTIVES } from 'angular2/common';
+import { Http, Headers } from 'angular2/http';
+import { AuthHttp } from 'angular2-jwt';
 import { Router } from 'angular2/router';
-
-import {status, text} from '../utils/fetch'
 
 let styles = require('./home.css');
 let template = require('./home.html');
@@ -16,12 +17,12 @@ let template = require('./home.html');
   styles: [styles]
 })
 export class Home {
-  jwt:string;
-  decodedJwt:string;
-  response:string;
-  api:string;
+  jwt: string;
+  decodedJwt: string;
+  response: string;
+  api: string;
 
-  constructor(public router:Router) {
+  constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
@@ -41,22 +42,21 @@ export class Home {
 
   _callApi(type, url) {
     this.response = null;
-    this.api = type;
-    window.fetch(url, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'bearer ' + this.jwt
-        }
-      })
-      .then(status)
-      .then(text)
-      .then((response) => {
-        this.response = response;
-      })
-      .catch((error) => {
-        this.response = error.message;
-      });
+    if (type === 'Anonymous') {
+      // For non-protected routes, just use Http
+      this.http.get(url)
+        .subscribe(
+          response => this.response = response.text(),
+          error => this.response = error.json().message
+        );
+    }
+    if (type === 'Secured') {
+      // For protected routes, use AuthHttp
+      this.authHttp.get(url)
+        .subscribe(
+          response => this.response = response.text(),
+          error => this.response = error.json().message
+        );
+    }
   }
 }

@@ -1,22 +1,26 @@
 {
-  "version": "1.5.0",
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "module": "commonjs",
-    "declaration": true,
-    "noImplicitAny": false,
-    "removeComments": false,
-    "noLib": false,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "listFiles": true,
-    "outDir": "dist"
+    "sourceMap": true
   },
-  "exclude": [
-    "node_modules"
-  ],
   "files": [
-    "src/index.ts"
-  ]
+    "typings/tsd.d.ts",  
+    "src/app/app.ts",
+    "src/home/home.ts",
+    "src/login/login.ts",
+    "src/signup/signup.ts",
+    "src/index.ts",
+    "src/common/headers.ts"
+  ],
+    "filesGlob": [
+    "./src/**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": true }
 }

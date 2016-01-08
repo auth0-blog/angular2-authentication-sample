@@ -1,7 +1,9 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var path = require('path');
 var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
+var toString  = Function.prototype.call.bind(Object.prototype.toString);
+var path = require('path');
+var webpack = require('webpack');
+// Webpack Plugins
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
   devtool: 'source-map',
@@ -9,22 +11,25 @@ module.exports = {
 
   //
   entry: {
-    angular2: [
-      // Angular 2 Deps
-      'zone.js',
+    'vendor': [
+      // Polyfills
+      'es6-shim',
+      'es6-promise',
       'reflect-metadata',
-
-      //'./src/common/BrowserDomAdapter',
-
-      'angular2/angular2',
+      'zone.js/dist/zone-microtask',
+      'zone.js/dist/long-stack-trace-zone',
+      // Angular2
+      'angular2/platform/browser',
+      'angular2/platform/common_dom',
+      'angular2/core',
       'angular2/router',
-      'angular2/core'
+      'angular2/http',
+      // RxJS
+      'rxjs',
+      // Other
+      'angular2-jwt'
     ],
-    app: [
-      // App
-      /*
-      // * include any 3rd party js lib here
-      */
+    'app': [
       './src/index'
     ]
   },
@@ -46,71 +51,62 @@ module.exports = {
       '.ts',
       '.js',
       '.json',
-      '.webpack.js',
-      '.web.js'
-    ],
-    alias: {
-      // When Angular2 has a TypeScript build
-      // we can switch between development and production
-      // 'angular2': 'angular2/es6/prod',
-      // 'angular2': 'angular2/es6/dev',
-      //'webapp': 'src'
-    }
+      '.css',
+      '.html'
+    ]
   },
 
   module: {
+    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
     loaders: [
+      // Support for .ts files.
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        query: {
+          'ignoreDiagnostics': [
+            2403, // 2403 -> Subsequent variable declarations
+            2300, // 2300 Duplicate identifier
+            2374, // 2374 -> Duplicate number index signature
+            2375  // 2375 -> Duplicate string index signature
+          ]
+        },
+        exclude: [ /\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/ ]
+      },
+
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json' },
+      { test: /\.json$/,  loader: 'json-loader' },
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw' },
+      { test: /\.css$/,   loader: 'raw-loader' },
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw' },
-
-      // Support for .ts files.
-      { test: /\.ts$/,    loader: 'ts' }
+      { test: /\.html$/,  loader: 'raw-loader' },
     ],
     noParse: [
-      /rtts_assert\/src\/rtts_assert/
+     /zone\.js\/dist\/.+/,
+     /reflect-metadata/,
+     /es(6|7)-.+/,
     ]
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'angular2',
-      minChunks: Infinity,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      filename: 'common.js'
-    }),
-    new webpack.DefinePlugin({
-      'ENV': {
-        'type': JSON.stringify('development'),
-        'debug': true
-      }
-    }),
-
-    // new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.BannerPlugin(getBanner())
+    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
+    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
   ],
-  // our Development Server configs
-  devServer: {
-    inline: true,
-    colors: true,
-    historyApiFallback: true,
-    contentBase: '.',
-    publicPath: '/build'
+  
+  // Other module loader config
+  tslint: {
+    emitErrors: false,
+    failOnHint: false
   },
-  debug: true,
-  cache: true,
-
-  context: __dirname,
-  stats: { colors: true, reasons: true }
+  
+  // our Development Server configs
+  // our Webpack Development Server config
+  devServer: {
+    historyApiFallback: true,
+    publicPath: '/build'
+  }
 };
 
 function getBanner() {

@@ -1,6 +1,8 @@
-import {Component, View} from 'angular2/angular2';
+import { Component, View } from 'angular2/core';
 import { Router, RouterLink } from 'angular2/router';
-import {status, json} from '../utils/fetch'
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
+import { Http, Headers } from 'angular2/http';
+import { contentHeaders } from '../common/headers';
 
 let styles   = require('./login.css');
 let template = require('./login.html');
@@ -9,36 +11,28 @@ let template = require('./login.html');
   selector: 'login'
 })
 @View({
-  directives: [RouterLink],
+  directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ],
   template: template,
   styles: [ styles ]
 })
 export class Login {
-  constructor(public router: Router) {
+  constructor(public router: Router, public http: Http) {
   }
 
   login(event, username, password) {
     event.preventDefault();
-    window.fetch('http://localhost:3001/sessions/create', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username, password
-      })
-    })
-    .then(status)
-    .then(json)
-    .then((response:any) => {
-      localStorage.setItem('jwt', response.id_token);
-      this.router.parent.navigateByUrl('/home');
-    })
-    .catch((error) => {
-      alert(error.message);
-      console.log(error.message);
-    });
+    let body = JSON.stringify({ username, password });
+    this.http.post('http://localhost:3001/sessions/create', body, { headers: contentHeaders })
+      .subscribe(
+        response => {
+          localStorage.setItem('jwt', response.json().id_token);
+          this.router.parent.navigateByUrl('/home');
+        },
+        error => {
+          alert(error.json().message);
+          console.log(error.json().message);
+        }
+      );
   }
 
   signup(event) {
