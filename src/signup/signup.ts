@@ -1,6 +1,8 @@
-import {CORE_DIRECTIVES, Component, View} from 'angular2/angular2';
-import {status, json} from '../utils/fetch';
+import { Component, View } from 'angular2/core';
 import { Router, RouterLink } from 'angular2/router';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
+import { Http } from 'angular2/http';
+import { contentHeaders } from '../common/headers';
 
 let styles   = require('./signup.css');
 let template = require('./signup.html');
@@ -9,36 +11,28 @@ let template = require('./signup.html');
   selector: 'signup'
 })
 @View({
-  directives: [ RouterLink, CORE_DIRECTIVES ],
+  directives: [ RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ],
   template: template,
   styles: [ styles ]
 })
 export class Signup {
-  constructor(public router: Router) {
+  constructor(public router: Router, public http: Http) {
   }
 
   signup(event, username, password) {
     event.preventDefault();
-    window.fetch('http://localhost:3001/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username, password
-      })
-    })
-    .then(status)
-    .then(json)
-    .then((response:any) => {
-      localStorage.setItem('jwt', response.id_token);
-      this.router.navigateByUrl('/home');
-    })
-    .catch((error) => {
-      alert(error.message);
-      console.log(error.message);
-    });
+    let body = JSON.stringify({ username, password });
+    this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
+      .subscribe(
+        response => {
+          localStorage.setItem('jwt', response.json().id_token);
+          this.router.parent.navigateByUrl('/home');
+        },
+        error => {
+          alert(error.text());
+          console.log(error.text());
+        }
+      );
   }
 
   login(event) {

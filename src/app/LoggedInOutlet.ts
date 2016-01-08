@@ -1,4 +1,4 @@
-import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/angular2';
+import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/core';
 import {Router, RouterOutlet, ComponentInstruction} from 'angular2/router';
 import {Login} from '../login/login';
 
@@ -6,11 +6,11 @@ import {Login} from '../login/login';
   selector: 'router-outlet'
 })
 export class LoggedInRouterOutlet extends RouterOutlet {
-  publicRoutes:any;
-  private parentRouter:Router;
+  publicRoutes: any;
+  private parentRouter: Router;
 
-  constructor(_elementRef:ElementRef, _loader:DynamicComponentLoader,
-              _parentRouter:Router, @Attribute('name') nameAttr:string) {
+  constructor(_elementRef: ElementRef, _loader: DynamicComponentLoader,
+              _parentRouter: Router, @Attribute('name') nameAttr: string) {
     super(_elementRef, _loader, _parentRouter, nameAttr);
 
     this.parentRouter = _parentRouter;

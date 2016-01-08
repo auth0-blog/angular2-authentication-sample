@@ -1,4 +1,4 @@
-import {View, Component} from 'angular2/angular2';
+import {View, Component} from 'angular2/core';
 import {Location, RouteConfig, RouterLink, Router} from 'angular2/router';
 
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
@@ -8,7 +8,6 @@ import {Signup} from '../signup/signup';
 
 let template = require('./app.html');
 
-
 @Component({
   selector: 'auth-app'
 })
@@ -17,11 +16,12 @@ let template = require('./app.html');
   directives: [ LoggedInRouterOutlet ]
 })
 @RouteConfig([
-  { path: '/',       redirectTo: '/home' },
-  { path: '/home',   as: 'Home',   component: Home },
-  { path: '/login',  as: 'Login',  component: Login },
-  { path: '/signup', as: 'Signup', component: Signup }
+  { path: '/', redirectTo: ['/Home'] },
+  { path: '/home', component: Home, as: 'Home' },
+  { path: '/login', component: Login, as: 'Login' },
+  { path: '/signup', component: Signup, as: 'Signup' }
 ])
+
 export class App {
   constructor(public router: Router) {
   }
