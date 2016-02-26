@@ -87,6 +87,8 @@ module.exports = {
      /zone\.js\/dist\/.+/,
      /reflect-metadata/,
      /es(6|7)-.+/,
+     /.zone-microtask/, 
+     /.long-stack-trace-zone/
     ]
   },
 
