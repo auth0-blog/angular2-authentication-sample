@@ -44,7 +44,7 @@ app.post('/sessions/create', function(req, res) {
     return res.status(401).send("The username or password don't match");
   }
 
-  if (!user.password === req.body.password) {
+  if (!(user.password === req.body.password)) {
     return res.status(401).send("The username or password don't match");
   }
 
