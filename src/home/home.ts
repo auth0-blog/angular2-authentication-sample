@@ -1,17 +1,15 @@
-import { Component, View } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
-import { Http, Headers } from 'angular2/http';
+import { Component } from '@angular/core';
+import { CORE_DIRECTIVES } from '@angular/common';
+import { Http, Headers } from '@angular/http';
+import { Router } from '@angular/router-deprecated';
 import { AuthHttp } from 'angular2-jwt';
-import { Router } from 'angular2/router';
 
 let styles = require('./home.css');
 let template = require('./home.html');
 
 
 @Component({
-  selector: 'home'
-})
-@View({
+  selector: 'home',
   directives: [CORE_DIRECTIVES],
   template: template,
   styles: [styles]

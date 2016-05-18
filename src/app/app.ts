@@ -1,5 +1,5 @@
-import {View, Component} from 'angular2/core';
-import {Location, RouteConfig, RouterLink, Router} from 'angular2/router';
+import {Component} from '@angular/core';
+import {RouteConfig, RouterLink, Router} from '@angular/router-deprecated';
 
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
 import {Home} from '../home/home';
@@ -9,9 +9,7 @@ import {Signup} from '../signup/signup';
 let template = require('./app.html');
 
 @Component({
-  selector: 'auth-app'
-})
-@View({
+  selector: 'auth-app',
   template: template,
   directives: [ LoggedInRouterOutlet ]
 })

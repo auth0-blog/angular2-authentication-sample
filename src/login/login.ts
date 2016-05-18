@@ -1,16 +1,14 @@
-import { Component, View } from 'angular2/core';
-import { Router, RouterLink } from 'angular2/router';
-import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
-import { Http, Headers } from 'angular2/http';
+import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router-deprecated';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
+import { Http, Headers } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 
 let styles   = require('./login.css');
 let template = require('./login.html');
 
 @Component({
-  selector: 'login'
-})
-@View({
+  selector: 'login',
   directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ],
   template: template,
   styles: [ styles ]

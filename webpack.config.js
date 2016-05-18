@@ -13,17 +13,18 @@ module.exports = {
   entry: {
     'vendor': [
       // Polyfills
-      'es6-shim',
-      'es6-promise',
-      'reflect-metadata',
-      'zone.js/dist/zone-microtask',
+      'core-js/es6',
+      'core-js/es7/reflect',
+      'zone.js/dist/zone',
       'zone.js/dist/long-stack-trace-zone',
       // Angular2
-      'angular2/platform/browser',
-      'angular2/platform/common_dom',
-      'angular2/core',
-      'angular2/router',
-      'angular2/http',
+      '@angular/common',
+      '@angular/platform-browser',
+      '@angular/platform-browser-dynamic',
+      '@angular/core',
+      '@angular/router',
+      '@angular/router-deprecated',
+      '@angular/http',
       // RxJS
       'rxjs',
       // Other

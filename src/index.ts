@@ -1,8 +1,8 @@
-import { bootstrap } from 'angular2/platform/browser';
-import { provide } from 'angular2/core';
-import { FORM_PROVIDERS } from 'angular2/common';
-import { ROUTER_PROVIDERS } from 'angular2/router';
-import { Http, HTTP_PROVIDERS } from 'angular2/http';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { provide } from '@angular/core';
+import { FORM_PROVIDERS } from '@angular/common';
+import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { Http, HTTP_PROVIDERS } from '@angular/http';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
 import { App } from './app/app';
