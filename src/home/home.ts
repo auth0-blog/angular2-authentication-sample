@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { Http, Headers } from '@angular/http';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 
-let styles = require('./home.css');
-let template = require('./home.html');
-
+const styles = require('./home.css');
+const template = require('./home.html');
 
 @Component({
   selector: 'home',
-  directives: [CORE_DIRECTIVES],
+  directives: [ CORE_DIRECTIVES ],
   template: template,
-  styles: [styles]
+  styles: [ styles ]
 })
 export class Home {
   jwt: string;
@@ -21,13 +20,13 @@ export class Home {
   api: string;
 
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
-    this.jwt = localStorage.getItem('jwt');
+    this.jwt = localStorage.getItem('id_token');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
 
   logout() {
-    localStorage.removeItem('jwt');
-    this.router.parent.navigateByUrl('/login');
+    localStorage.removeItem('id_token');
+    this.router.navigate(['/login']);
   }
 
   callAnonymousApi() {

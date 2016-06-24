@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 
-let styles   = require('./signup.css');
-let template = require('./signup.html');
+const styles   = require('./signup.css');
+const template = require('./signup.html');
 
 @Component({
   selector: 'signup',
-  directives: [ RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES ],
   template: template,
   styles: [ styles ]
 })
@@ -23,8 +23,8 @@ export class Signup {
     this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
       .subscribe(
         response => {
-          localStorage.setItem('jwt', response.json().id_token);
-          this.router.parent.navigateByUrl('/home');
+          localStorage.setItem('id_token', response.json().id_token);
+          this.router.navigate(['/home']);
         },
         error => {
           alert(error.text());
@@ -35,7 +35,7 @@ export class Signup {
 
   login(event) {
     event.preventDefault();
-    this.router.parent.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 
 }

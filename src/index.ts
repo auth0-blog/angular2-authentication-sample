@@ -1,25 +1,20 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { provide } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { FORM_PROVIDERS } from '@angular/common';
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
-import { Http, HTTP_PROVIDERS } from '@angular/http';
-import { AuthConfig, AuthHttp } from 'angular2-jwt';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { AuthGuard } from './common/auth.guard';
 
-import { App } from './app/app';
+import { App } from './app';
+import { routes } from './app.routes';
 
 bootstrap(
   App,
   [
+    provideRouter(routes),
     FORM_PROVIDERS,
-    ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
-    provide(AuthHttp, {
-      useFactory: (http) => {
-        return new AuthHttp(new AuthConfig({
-          tokenName: 'jwt'
-        }), http);
-      },
-      deps: [Http]
-    })
+    AUTH_PROVIDERS,
+    AuthGuard
   ]
 );

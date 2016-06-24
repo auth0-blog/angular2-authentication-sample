@@ -9,12 +9,13 @@
   },
   "files": [
     "typings/tsd.d.ts",  
-    "src/app/app.ts",
-    "src/home/home.ts",
-    "src/login/login.ts",
-    "src/signup/signup.ts",
+    "src/app.ts",
+    "src/home/index.ts",
+    "src/login/index.ts",
+    "src/signup/index.ts",
     "src/index.ts",
-    "src/common/headers.ts"
+    "src/common/headers.ts",
+    "src/common/auth.guard.ts"
   ],
     "filesGlob": [
     "./src/**/*.ts",

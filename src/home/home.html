@@ -8,7 +8,7 @@
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callAnonymousApi()">Call Anonymous API</a></p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="callSecuredApi()">Call Secure API</a></p>
     <p><a class="btn btn-primary btn-lg" role="button" (click)="logout()">Logout</a></p>
-    <h2 *ngIf="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
-    <h3 *ngIf="response">{{response}}</h3>
+    <h2 *ngIf="response">The response of calling the <span class="red">{{ api }}</span> API is:</h2>
+    <h3 *ngIf="response">{{ response }}</h3>
   </div>
 </div>
