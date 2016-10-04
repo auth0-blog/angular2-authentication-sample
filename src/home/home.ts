@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -9,7 +8,6 @@ const template = require('./home.html');
 
 @Component({
   selector: 'home',
-  directives: [ CORE_DIRECTIVES ],
   template: template,
   styles: [ styles ]
 })
@@ -26,7 +24,7 @@ export class Home {
 
   logout() {
     localStorage.removeItem('id_token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['login']);
   }
 
   callAnonymousApi() {

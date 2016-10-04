@@ -6,7 +6,11 @@ This sample shows how to create an angular 2 app that:
 * **Calls APIs** authenticated and not.
 * Extends the **RouterOutlet** for route pipeline changes.
 
-> You can **learn more about how it works [in this blogpost](https://auth0.com/blog/2015/05/14/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/)**
+You can **learn more about how it works in the following blogposts**
+
+* [Angular 2 Authentication Tutorial](https://auth0.com/blog/angular-2-authentication/)
+* [Protecting Routes using Guards in Angular 2](http://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
+* [Angular 2 authentication revisited](https://medium.com/@blacksonic86/angular-2-authentication-revisited-611bf7373bf9)
 
 ## Running it
 
