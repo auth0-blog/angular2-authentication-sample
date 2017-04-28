@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { AuthService } from './common/auth.service';
 
 import { AuthGuard } from './common/auth.guard';
 import { Home } from './home';
@@ -26,7 +27,7 @@ import { routes } from './app.routes';
     })
   ],
   providers: [
-    AuthGuard, ...AUTH_PROVIDERS
+    AuthGuard, ...AUTH_PROVIDERS, AuthService
   ]
 })
 export class AppModule {}

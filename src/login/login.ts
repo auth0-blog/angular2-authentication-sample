@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
+import { AuthService } from '../common/auth.service';
 
 const styles   = require('./login.css');
 const template = require('./login.html');
@@ -12,7 +13,7 @@ const template = require('./login.html');
   styles: [ styles ]
 })
 export class Login {
-  constructor(public router: Router, public http: Http) {
+  constructor(public router: Router, public http: Http, private auth: AuthService) {
   }
 
   login(event, username, password) {
