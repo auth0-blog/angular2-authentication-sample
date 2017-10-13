@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
+import { AuthConfigConsts } from 'angular2-jwt';
 
 const styles   = require('./login.css');
 const template = require('./login.html');
@@ -21,7 +22,7 @@ export class Login {
     this.http.post('http://localhost:3001/sessions/create', body, { headers: contentHeaders })
       .subscribe(
         response => {
-          localStorage.setItem('id_token', response.json().id_token);
+          localStorage.setItem(AuthConfigConsts.DEFAULT_TOKEN_NAME, response.json().id_token);
           this.router.navigate(['home']);
         },
         error => {
