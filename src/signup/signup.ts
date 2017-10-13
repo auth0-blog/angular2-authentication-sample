@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
+import { HttpClient } from '@angular/common/http';
+import { AUTH_TOKEN } from '../common/token';
 
 @Component({
   selector: 'signup',
@@ -9,21 +10,21 @@ import { contentHeaders } from '../common/headers';
   styleUrls: ['./signup.css']
 })
 export class Signup {
-  constructor(public router: Router, public http: Http) {
+  constructor(public router: Router, public http: HttpClient) {
   }
 
   signup(event, username, password) {
     event.preventDefault();
-    let body = JSON.stringify({ username, password });
+    let body = { username, password };
     this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
       .subscribe(
-        response => {
-          localStorage.setItem('id_token', response.json().id_token);
+        (response: any) => {
+          localStorage.setItem(AUTH_TOKEN, response.id_token);
           this.router.navigate(['home']);
         },
         error => {
-          alert(error.text());
-          console.log(error.text());
+          alert(error.message);
+          console.log(error.message);
         }
       );
   }

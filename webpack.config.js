@@ -17,15 +17,11 @@ module.exports = {
       'zone.js/dist/long-stack-trace-zone',
       // Angular2
       '@angular/common',
+      '@angular/common/http',
       '@angular/platform-browser',
       '@angular/platform-browser-dynamic',
       '@angular/core',
-      '@angular/router',
-      '@angular/http',
-      // RxJS
-      'rxjs',
-      // Other
-      'angular2-jwt'
+      '@angular/router'
     ],
     'app': [
       './src/index'

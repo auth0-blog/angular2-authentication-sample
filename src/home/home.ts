@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
 import { Router } from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
+import { HttpClient } from '@angular/common/http';
+import { AUTH_TOKEN } from '../common/token';
 
 @Component({
   selector: 'home',
@@ -14,41 +14,31 @@ export class Home {
   response: string;
   api: string;
 
-  constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
-    this.jwt = localStorage.getItem('id_token');
+  constructor(public router: Router, public http: HttpClient) {
+    this.jwt = localStorage.getItem(AUTH_TOKEN);
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
 
   logout() {
-    localStorage.removeItem('id_token');
+    localStorage.removeItem(AUTH_TOKEN);
     this.router.navigate(['login']);
   }
 
   callAnonymousApi() {
-    this._callApi('Anonymous', 'http://localhost:3001/api/random-quote');
+    this._callApi('http://localhost:3001/api/random-quote');
   }
 
   callSecuredApi() {
-    this._callApi('Secured', 'http://localhost:3001/api/protected/random-quote');
+    this._callApi('http://localhost:3001/api/protected/random-quote');
   }
 
-  _callApi(type, url) {
+  _callApi(url) {
     this.response = null;
-    if (type === 'Anonymous') {
-      // For non-protected routes, just use Http
-      this.http.get(url)
-        .subscribe(
-          response => this.response = response.text(),
-          error => this.response = error.text()
-        );
-    }
-    if (type === 'Secured') {
-      // For protected routes, use AuthHttp
-      this.authHttp.get(url)
-        .subscribe(
-          response => this.response = response.text(),
-          error => this.response = error.text()
-        );
-    }
+
+    this.http.get(url, { responseType: 'text' })
+      .subscribe(
+        response => this.response = <any>response,
+        error => this.response = error.message
+      );
   }
 }

@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './common/auth.guard';
 import { Home } from './home';
@@ -20,13 +20,23 @@ import { routes } from './app.routes';
     Home, Login, Signup, App
   ],
   imports: [
-    HttpModule, BrowserModule, FormsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['localhost:3001']
+      }
+    }),
     RouterModule.forRoot(routes, {
       useHash: true
     })
   ],
   providers: [
-    AuthGuard, ...AUTH_PROVIDERS
+    AuthGuard
   ]
 })
 export class AppModule {}
