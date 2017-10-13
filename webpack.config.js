@@ -41,20 +41,16 @@ module.exports = {
   },
 
   resolve: {
-    root: __dirname,
-    extensions: [
-      '',
-      '.ts',
-      '.js',
-      '.json',
-      '.css',
-      '.html'
-    ]
+    extensions: ['.ts', '.js', '.json', '.css', '.html']
   },
 
   module: {
-    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
     loaders: [
+      {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        enforce: 'pre'
+      },
       // Support for .ts files.
       {
         test: /\.ts$/,
@@ -73,15 +69,13 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.join(__dirname, 'src')
+    ),
     new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
     new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
   ],
-
-  // Other module loader config
-  tslint: {
-    emitErrors: false,
-    failOnHint: false
-  },
 
   // our Development Server configs
   // our Webpack Development Server config

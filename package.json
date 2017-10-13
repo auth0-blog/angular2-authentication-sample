@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "server": "cd backend && npm i && node server.js",
-    "front": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "front": "webpack-dev-server --inline -d --colors --progress --port 3000",
     "start": "npm run front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -50,18 +50,18 @@
     "css-loader": "^0.28.7",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
-    "file-loader": "^0.9.0",
+    "file-loader": "^1.1.5",
     "imports-loader": "^0.7.1",
     "json-loader": "^0.5.4",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.19.0",
     "tsconfig-lint": "^0.12.0",
-    "tslint": "^3.7.1",
-    "tslint-loader": "^2.1.3",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
     "typedoc": "^0.4.3",
     "typescript": "~2.5.3",
     "url-loader": "^0.6.2",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1"
   }
 }
