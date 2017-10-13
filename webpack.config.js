@@ -1,13 +1,12 @@
-var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
-var toString  = Function.prototype.call.bind(Object.prototype.toString);
-var path = require('path');
-var webpack = require('webpack');
+'use strict';
+
+const path = require('path');
+const webpack = require('webpack');
 // Webpack Plugins
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
-  devtool: 'source-map',
-  // devtool: 'eval',
+  devtool: 'cheap-source-map',
 
   //
   entry: {
@@ -35,12 +34,10 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('build'),
+    path: path.join(__dirname, 'build'),
     filename: '[name].js',
-    // filename: '[name].[hash].js',
     sourceMapFilename: '[name].js.map',
     chunkFilename: '[id].chunk.js'
-    // publicPath: 'http://mycdn.com/'
   },
 
   resolve: {
@@ -61,17 +58,7 @@ module.exports = {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loader: 'ts-loader',
-        query: {
-          'ignoreDiagnostics': [
-            2403, // 2403 -> Subsequent variable declarations
-            2300, // 2300 Duplicate identifier
-            2304, // 2304 Cannot find name
-            2374, // 2374 -> Duplicate number index signature
-            2375  // 2375 -> Duplicate string index signature
-          ]
-        },
-        exclude: [ /\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/ ]
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
       },
 
       // Support for *.json files.
@@ -82,13 +69,6 @@ module.exports = {
 
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader' },
-    ],
-    noParse: [
-     /zone\.js\/dist\/.+/,
-     /reflect-metadata/,
-     /es(6|7)-.+/,
-     /.zone-microtask/,
-     /.long-stack-trace-zone/
     ]
   },
 
@@ -110,17 +90,3 @@ module.exports = {
     publicPath: '/build'
   }
 };
-
-function getBanner() {
-  return 'This is a sample that shows how to add authentication to an Angular 2 (ng2) app by @auth0';
-}
-
-function root(args) {
-  args = sliceArgs(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-function rootNode(args) {
-  args = sliceArgs(arguments, 0);
-  return root.apply(path, ['node_modules'].concat(args));
-}
-

@@ -3,13 +3,10 @@ import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 
-const styles   = require('./signup.css');
-const template = require('./signup.html');
-
 @Component({
   selector: 'signup',
-  template: template,
-  styles: [ styles ]
+  templateUrl: './signup.html',
+  styleUrls: ['./signup.css']
 })
 export class Signup {
   constructor(public router: Router, public http: Http) {

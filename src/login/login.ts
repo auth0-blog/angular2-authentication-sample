@@ -4,13 +4,10 @@ import { Http } from '@angular/http';
 import { contentHeaders } from '../common/headers';
 import { AuthConfigConsts } from 'angular2-jwt';
 
-const styles   = require('./login.css');
-const template = require('./login.html');
-
 @Component({
   selector: 'login',
-  template: template,
-  styles: [ styles ]
+  templateUrl: './login.html',
+  styleUrls: ['./login.css']
 })
 export class Login {
   constructor(public router: Router, public http: Http) {

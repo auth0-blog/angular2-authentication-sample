@@ -3,13 +3,10 @@ import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { AuthHttp } from 'angular2-jwt';
 
-const styles = require('./home.css');
-const template = require('./home.html');
-
 @Component({
   selector: 'home',
-  template: template,
-  styles: [ styles ]
+  templateUrl: './home.html',
+  styleUrls: ['./home.css']
 })
 export class Home {
   jwt: string;
