@@ -13,6 +13,7 @@ import { Signup } from './signup';
 import { App } from './app';
 
 import { routes } from './app.routes';
+import { AUTH_TOKEN } from './common/token';
 
 @NgModule({
   bootstrap: [App],
@@ -26,7 +27,7 @@ import { routes } from './app.routes';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('access_token');
+          return localStorage.getItem(AUTH_TOKEN);
         },
         whitelistedDomains: ['localhost:3001']
       }
