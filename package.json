@@ -1,11 +1,11 @@
 {
   "name": "angular2-authentication-sample",
-  "version": "0.0.1",
-  "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
+  "version": "1.0.0",
+  "description": "This is a sample that shows how to add authentication to an Angular 2+ app",
   "main": "",
   "scripts": {
     "server": "cd backend && npm i && node server.js",
-    "front": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "front": "webpack-dev-server --inline -d --colors --progress --port 3000",
     "start": "npm run front",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +16,8 @@
   "contributors": [
     "Martin Gontovnikas (http://gon.to) <martin@gon.to>",
     "PatrickJS <github@gdi2290.com>",
-    "Ryan Chenkie <ryanchenkie@gmail.com>"
+    "Ryan Chenkie <ryanchenkie@gmail.com>",
+    "Gábor Soós <soos.gabor86@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -24,40 +25,42 @@
   },
   "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
-    "@angular/common": "2.0.1",
-    "@angular/compiler": "2.0.1",
-    "@angular/core": "2.0.1",
-    "@angular/forms": "2.0.1",
-    "@angular/http": "2.0.1",
-    "@angular/platform-browser": "2.0.1",
-    "@angular/platform-browser-dynamic": "2.0.1",
-    "@angular/platform-server": "2.0.1",
-    "@angular/router": "3.0.1",
-    "angular2-jwt": "0.1.23",
+    "@angular/animations": "4.4.5",
+    "@angular/common": "4.4.5",
+    "@angular/compiler": "4.4.5",
+    "@angular/core": "4.4.5",
+    "@angular/forms": "4.4.5",
+    "@angular/platform-browser": "4.4.5",
+    "@angular/platform-browser-dynamic": "4.4.5",
+    "@angular/platform-server": "4.4.5",
+    "@angular/router": "4.4.5",
+    "@auth0/angular-jwt": "1.0.0-beta.9",
+    "@types/core-js": "^0.9.43",
+    "@types/node": "^8.0.34",
+    "@types/webpack": "^3.0.13",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jwt-decode": "^2.0.1",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "~0.6.25"
+    "rxjs": "5.4.3",
+    "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "css-loader": "^0.25.0",
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^3.2.3",
+    "css-loader": "^0.28.7",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
-    "file-loader": "^0.9.0",
-    "imports-loader": "^0.6.5",
+    "file-loader": "^1.1.5",
+    "imports-loader": "^0.7.1",
     "json-loader": "^0.5.4",
     "raw-loader": "^0.5.1",
-    "style-loader": "^0.13.1",
-    "ts-loader": "^0.8.1",
+    "style-loader": "^0.19.0",
     "tsconfig-lint": "^0.12.0",
-    "tslint": "^3.7.1",
-    "tslint-loader": "^2.1.3",
-    "typedoc": "^0.4.3",
-    "typescript": "~2.0.3",
-    "typings": "^1.3.0",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "~2.5.3",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.1"
   }
 }

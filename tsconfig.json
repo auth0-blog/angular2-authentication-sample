@@ -5,21 +5,15 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ]
   },
-  "files": [
-    "typings/tsd.d.ts",  
-    "src/app.ts",
-    "src/home/index.ts",
-    "src/login/index.ts",
-    "src/signup/index.ts",
-    "src/index.ts",
-    "src/common/headers.ts",
-    "src/common/auth.guard.ts"
-  ],
-    "filesGlob": [
-    "./src/**/*.ts",
-    "!./node_modules/**/*.ts"
+  "exclude": [
+    "node_modules",
+    "dist"
   ],
   "compileOnSave": false,
   "buildOnSave": false,

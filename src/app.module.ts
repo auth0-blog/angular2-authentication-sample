@@ -1,32 +1,46 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import 'rxjs/add/operator/share';
 
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './common/auth.guard';
-import { Home } from './home';
-import { Login } from './login';
-import { Signup } from './signup';
-import { App } from './app';
+import { HomeComponent } from './components/home';
+import { LoginComponent } from './components/login';
+import { SignupComponent } from './components/signup';
+import { AppComponent } from './components/app';
 
 import { routes } from './app.routes';
+import { AUTH_TOKEN } from './common/token';
+import { BackendService } from './services/backend';
 
 @NgModule({
-  bootstrap: [App],
+  bootstrap: [AppComponent],
   declarations: [
-    Home, Login, Signup, App
+    HomeComponent, LoginComponent, SignupComponent, AppComponent
   ],
   imports: [
-    HttpModule, BrowserModule, FormsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem(AUTH_TOKEN);
+        },
+        whitelistedDomains: ['localhost:3001']
+      }
+    }),
     RouterModule.forRoot(routes, {
       useHash: true
     })
   ],
   providers: [
-    AuthGuard, ...AUTH_PROVIDERS
+    BackendService,
+    AuthGuard
   ]
 })
 export class AppModule {}

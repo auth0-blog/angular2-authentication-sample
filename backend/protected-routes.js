@@ -1,11 +1,11 @@
-var express = require('express'),
-    jwt     = require('express-jwt'),
-    config  = require('./config'),
-    quoter  = require('./quoter');
+const express = require('express');
+const jwt     = require('express-jwt');
+const config  = require('./config');
+const quoter  = require('./quoter');
 
-var app = module.exports = express.Router();
+const app = module.exports = express.Router();
 
-var jwtCheck = jwt({
+const jwtCheck = jwt({
   secret: config.secret
 });
 
