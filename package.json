@@ -1,7 +1,7 @@
 {
   "name": "angular2-authentication-sample",
-  "version": "0.0.1",
-  "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
+  "version": "1.0.0",
+  "description": "This is a sample that shows how to add authentication to an Angular 2+ app",
   "main": "",
   "scripts": {
     "server": "cd backend && npm i && node server.js",
