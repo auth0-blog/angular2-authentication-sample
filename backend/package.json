@@ -4,6 +4,7 @@
   "description": "Chuck Norris Quotes API",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +31,10 @@
     "express-jwt": "^5.3.0",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "nodemon": "^1.12.1"
+  },
+  "nodemonConfig": {
+    "ignore": ["node_modules/*"]
   }
 }
