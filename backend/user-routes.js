@@ -1,12 +1,12 @@
-var express = require('express'),
-    _       = require('lodash'),
-    config  = require('./config'),
-    jwt     = require('jsonwebtoken');
+const express = require('express');
+const _       = require('lodash');
+const config  = require('./config');
+const jwt     = require('jsonwebtoken');
 
-var app = module.exports = express.Router();
+const app = module.exports = express.Router();
 
 // XXX: This should be a database of users :).
-var users = [{
+const users = [{
   id: 1,
   username: 'gonto',
   password: 'gonto'
@@ -24,7 +24,7 @@ app.post('/users', function(req, res) {
    return res.status(400).send("A user with that username already exists");
   }
 
-  var profile = _.pick(req.body, 'username', 'password', 'extra');
+  const profile = _.pick(req.body, 'username', 'password', 'extra');
   profile.id = _.max(users, 'id').id + 1;
 
   users.push(profile);
@@ -39,7 +39,7 @@ app.post('/sessions/create', function(req, res) {
     return res.status(400).send("You must send the username and the password");
   }
 
-  var user = _.find(users, {username: req.body.username});
+  const user = _.find(users, {username: req.body.username});
   if (!user) {
     return res.status(401).send("The username or password don't match");
   }
