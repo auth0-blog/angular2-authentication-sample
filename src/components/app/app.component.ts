@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'auth-app',
-  templateUrl: './app.html'
+  templateUrl: './app.template.html'
 })
 
-export class App {
+export class AppComponent {
   constructor(public router: Router) {}
 }

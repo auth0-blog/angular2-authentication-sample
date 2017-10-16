@@ -7,18 +7,18 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './common/auth.guard';
-import { Home } from './home';
-import { Login } from './login';
-import { Signup } from './signup';
-import { App } from './app';
+import { HomeComponent } from './components/home';
+import { LoginComponent } from './components/login';
+import { SignupComponent } from './components/signup';
+import { AppComponent } from './components/app';
 
 import { routes } from './app.routes';
 import { AUTH_TOKEN } from './common/token';
 
 @NgModule({
-  bootstrap: [App],
+  bootstrap: [AppComponent],
   declarations: [
-    Home, Login, Signup, App
+    HomeComponent, LoginComponent, SignupComponent, AppComponent
   ],
   imports: [
     BrowserModule,

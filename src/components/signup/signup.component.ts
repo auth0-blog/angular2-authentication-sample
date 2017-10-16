@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { contentHeaders } from '../common/headers';
+import { contentHeaders } from '../../common/headers';
 import { HttpClient } from '@angular/common/http';
-import { AUTH_TOKEN } from '../common/token';
+import { AUTH_TOKEN } from '../../common/token';
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  selector: 'signup',
+  templateUrl: './signup.template.html',
+  styleUrls: ['./signup.style.css']
 })
-export class Login {
-  constructor(public router: Router, public http: HttpClient) {}
+export class SignupComponent {
+  constructor(public router: Router, public http: HttpClient) {
+  }
 
-  login(event, username, password) {
+  signup(event, username, password) {
     event.preventDefault();
     let body = { username, password };
-    this.http.post('http://localhost:3001/sessions/create', body, { headers: contentHeaders })
+    this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
       .subscribe(
         (response: any) => {
           localStorage.setItem(AUTH_TOKEN, response.id_token);
@@ -28,8 +29,9 @@ export class Login {
       );
   }
 
-  signup(event) {
+  login(event) {
     event.preventDefault();
-    this.router.navigate(['signup']);
+    this.router.navigate(['login']);
   }
+
 }

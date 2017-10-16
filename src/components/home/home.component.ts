@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AUTH_TOKEN } from '../common/token';
+import { AUTH_TOKEN } from '../../common/token';
 
 @Component({
   selector: 'home',
-  templateUrl: './home.html',
-  styleUrls: ['./home.css']
+  templateUrl: './home.template.html',
+  styleUrls: ['./home.style.css']
 })
-export class Home {
+export class HomeComponent {
   jwt: string;
   decodedJwt: string;
   response: string;
