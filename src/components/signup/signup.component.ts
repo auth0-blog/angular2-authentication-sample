@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { contentHeaders } from '../../common/headers';
-import { HttpClient } from '@angular/common/http';
 import { AUTH_TOKEN } from '../../common/token';
+import { BackendService } from '../../services/backend';
 
 @Component({
   selector: 'signup',
@@ -10,13 +9,13 @@ import { AUTH_TOKEN } from '../../common/token';
   styleUrls: ['./signup.style.css']
 })
 export class SignupComponent {
-  constructor(public router: Router, public http: HttpClient) {
-  }
+  constructor(public router: Router, public backend: BackendService) {}
 
   signup(event, username, password) {
     event.preventDefault();
-    let body = { username, password };
-    this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
+
+    const body = { username, password };
+    this.backend.signup(body)
       .subscribe(
         (response: any) => {
           localStorage.setItem(AUTH_TOKEN, response.id_token);
@@ -33,5 +32,4 @@ export class SignupComponent {
     event.preventDefault();
     this.router.navigate(['login']);
   }
-
 }

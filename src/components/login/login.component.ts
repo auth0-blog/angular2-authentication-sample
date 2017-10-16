@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { contentHeaders } from '../../common/headers';
-import { HttpClient } from '@angular/common/http';
 import { AUTH_TOKEN } from '../../common/token';
+import { BackendService } from '../../services/backend';
 
 @Component({
   selector: 'login',
@@ -10,12 +9,13 @@ import { AUTH_TOKEN } from '../../common/token';
   styleUrls: ['./login.style.css']
 })
 export class LoginComponent {
-  constructor(public router: Router, public http: HttpClient) {}
+  constructor(public router: Router, public backend: BackendService) {}
 
   login(event, username, password) {
     event.preventDefault();
-    let body = { username, password };
-    this.http.post('http://localhost:3001/sessions/create', body, { headers: contentHeaders })
+
+    const body = { username, password };
+    this.backend.login(body)
       .subscribe(
         (response: any) => {
           localStorage.setItem(AUTH_TOKEN, response.id_token);

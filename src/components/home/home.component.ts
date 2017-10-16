@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { AUTH_TOKEN } from '../../common/token';
+import { BackendService } from '../../services/backend';
 
 @Component({
   selector: 'home',
@@ -14,7 +14,7 @@ export class HomeComponent {
   response: string;
   api: string;
 
-  constructor(public router: Router, public http: HttpClient) {
+  constructor(public router: Router, public backend: BackendService) {
     this.jwt = localStorage.getItem(AUTH_TOKEN);
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
   }
@@ -35,7 +35,7 @@ export class HomeComponent {
   _callApi(url) {
     this.response = null;
 
-    this.http.get(url, { responseType: 'text' })
+    this.backend.callApi(url)
       .subscribe(
         response => this.response = <any>response,
         error => this.response = error.message

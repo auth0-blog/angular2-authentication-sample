@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import 'rxjs/add/operator/share';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { AppComponent } from './components/app';
 
 import { routes } from './app.routes';
 import { AUTH_TOKEN } from './common/token';
+import { BackendService } from './services/backend';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -37,6 +39,7 @@ import { AUTH_TOKEN } from './common/token';
     })
   ],
   providers: [
+    BackendService,
     AuthGuard
   ]
 })
